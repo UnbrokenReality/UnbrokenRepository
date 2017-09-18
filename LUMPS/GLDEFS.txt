@@ -1,0 +1,755 @@
+// ========= LIGHTS OF UNBROKEN REALITY =========
+// Compiled and created by HEISENBERG
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+// =============== MONSTERS ===============
+
+////////////////////////////////////////////////////////////////////////////
+
+//HELL'S GUARD by Espi - PART ONE: LIGHTS
+Pointlight HellGuardFire
+{
+Color 0.8 0.8 0.3
+Size 32
+Offset 0 32 0
+}
+
+Object HellGuard
+{
+Frame HLGDF { Light HellGuardFire }
+}
+
+Pointlight HellGuardBall1
+{
+Color 0.4 0.4 0.0
+Size 32
+}
+
+Pointlight HellGuardBall2
+{
+Color 0.5 0.5 0.0
+Size 40
+}
+
+Pointlight HellGuardBall3
+{
+Color 0.6 0.6 0.0
+Size 48
+}
+
+Pointlight HellGuardBall4
+{
+Color 0.3 0.3 0.0
+Size 32
+}
+
+Pointlight HellGuardBall5
+{
+Color 0.2 0.2 0.0
+Size 16
+}
+
+Object HellGuardBall
+{
+Frame HGFBA { Light HellGuardBall1 }
+Frame HGFBB { Light HellGuardBall1 }
+Frame HGFBC { Light HellGuardBall1 }
+Frame HGFBD { Light HellGuardBall1 }
+Frame HGFBE { Light HellGuardBall2 }
+Frame HGFBF { Light HellGuardBall3 }
+Frame HGFBG { Light HellGuardBall4 }
+Frame HGFBH { Light HellGuardBall5 }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+//SPRIT IMP by GhastlyDragon and Tormentor667
+Pointlight SpiritImpBall1
+{
+Color 1.0 1.0 1.0
+Size 40
+}
+
+Pointlight SpiritImpBall2
+{
+Color 1.0 1.0 1.0
+Size 44
+}
+
+Pointlight SpiritImpBall3
+{
+Color 1.0 1.0 1.0
+Size 48
+}
+
+Pointlight SpiritImpBall4
+{
+Color 1.0 1.0 1.0
+Size 36
+}
+
+Pointlight SpiritImpBall5
+{
+Color 1.0 1.0 1.0
+Size 32
+}
+
+Pointlight SpiritImpBall6
+{
+Color 1.0 1.0 1.0
+Size 28
+}
+
+Pointlight SpiritImpBall7
+{
+Color 1.0 1.0 1.0
+Size 24
+}
+
+Pointlight SpiritImpBall8
+{
+Color 1.0 1.0 1.0
+Size 20
+}
+
+Pointlight SpiritImpBall9
+{
+Color 1.0 1.0 1.0
+Size 16
+}
+
+Object SpiritImpBall
+{
+Frame SIBAA { Light SpiritImpBall1 }
+Frame SIBAB { Light SpiritImpBall1 }
+Frame SIBAC { Light SpiritImpBall2 }
+Frame SIBAD { Light SpiritImpBall3 }
+Frame SIBAE { Light SpiritImpBall2 }
+Frame SIBAF { Light SpiritImpBall1 }
+Frame SIBAG { Light SpiritImpBall4 }
+Frame SIBAH { Light SpiritImpBall5 }
+Frame SIBAI { Light SpiritImpBall6 }
+Frame SIBAJ { Light SpiritImpBall7 }
+Frame SIBAK { Light SpiritImpBall8 }
+Frame SIBAL { Light SpiritImpBall9 }
+}
+
+
+PointLight SpiritImpX_1
+{
+Offset 0 34 0
+Color 1.0 1.0 1.0
+Size 8
+}
+
+PointLight SpiritImpX_2
+{
+Offset 0 35 0
+Color 1.0 1.0 1.0
+Size 12
+}
+
+PointLight SpiritImpX_3
+{
+Offset 0 35 0
+Color 1.0 1.0 1.0
+Size 16
+}
+
+PointLight SpiritImpX_4
+{
+Offset 0 35 0
+Color 1.0 1.0 1.0
+Size 20
+}
+
+PointLight SpiritImpX_5
+{
+Offset 0 35 0
+Color 1.0 1.0 1.0
+Size 24
+}
+
+PointLight SpiritImpX_6
+{
+Offset 0 35 0
+Color 1.0 1.0 1.0
+Size 32
+}
+
+PointLight SpiritImpX_7
+{
+Offset 0 35 0
+Color 1.0 1.0 1.0
+Size 40
+}
+
+PointLight SpiritImpX_8
+{
+Offset 0 35 0
+Color 1.0 1.0 1.0
+Size 58
+}
+
+PointLight SpiritImpX_9
+{
+Offset 0 35 0
+Color 1.0 1.0 1.0
+Size 20
+}
+
+Object SpiritImp
+{
+Frame SPIPE { Light SpiritImpX_1 }
+Frame SPIPF { Light SpiritImpX_2 }
+Frame SPIPG { Light SpiritImpX_3 }
+Frame SPIPH { Light SpiritImpX_4 }
+Frame SPIPI { Light SpiritImpX_5 }
+Frame SPIPJ { Light SpiritImpX_6 }
+Frame SPIPK { Light SpiritImpX_7 }
+Frame SPIPL { Light SpiritImpX_8 }
+Frame SPIPM { Light SpiritImpX_9 }
+}
+
+Pointlight SpiritImpGhost1
+{
+Color 1.0 1.0 1.0
+Size 8
+Offset 0 4 0
+}
+
+Pointlight SpiritImpGhost2
+{
+Color 1.0 1.0 1.0
+Size 16
+Offset 0 8 0
+}
+
+Pointlight SpiritImpGhost3
+{
+Color 1.0 1.0 1.0
+Size 24
+Offset 0 32 0
+}
+
+Pointlight SpiritImpGhost4
+{
+Color 1.0 1.0 1.0
+Size 24
+Offset 0 48 0
+}
+
+Pointlight SpiritImpGhost5
+{
+Color 1.0 1.0 1.0
+Size 16
+Offset 0 56 0
+}
+
+Object SpiritImpGhost1
+{
+Frame SIGHA { Light SpiritImpGhost1 }
+Frame SIGHB { Light SpiritImpGhost2 }
+Frame SIGHC { Light SpiritImpGhost3 }
+Frame SIGHD { Light SpiritImpGhost4 }
+Frame SIGHE { Light SpiritImpGhost5 }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+//FALLEN BY ERIANCE - PART ONE: LIGHTS
+
+FlickerLight2 FallenLight
+{
+Color 1.0 0.5 0.2
+Size 128
+SecondarySize 64
+Interval 8
+}
+
+Pointlight FallenLight2
+{
+Color 1.0 0.5 0.2
+Size 96
+}
+
+Pointlight FallenLight3
+{
+Color 1.0 0.5 0.2
+Size 64
+}
+
+Pointlight FallenLight4
+{
+Color 1.0 0.5 0.2
+Size 32
+}
+
+Object Fallen
+{
+Frame FALNA { Light FallenLight }
+Frame FALNB { Light FallenLight }
+Frame FALNC { Light FallenLight }
+Frame FALND { Light FallenLight }
+Frame FALNE { Light FallenLight }
+Frame FALNF { Light FallenLight }
+Frame FALNG { Light FallenLight }
+Frame FALNH { Light FallenLight2 }
+Frame FALNI { Light FallenLight3 }
+Frame FALNJ { Light FallenLight4 }
+}
+
+
+Pointlight FallenShot
+{
+Color 0.8 0.4 0.2
+Size 32
+}
+
+Pointlight FallenShot2
+{
+Color 1.0 0.5 0.3
+Size 48
+}
+
+Pointlight FallenShot3
+{
+Color 0.8 0.4 0.2
+Size 40
+}
+
+Pointlight FallenShot4
+{
+Color 0.5 0.2 0.0
+Size 24
+}
+
+Pointlight FallenShot5
+{
+Color 0.3 0.15 0.0
+Size 16
+}
+
+Object FallenShot
+{
+Frame BALFA { Light FallenShot }
+Frame BALFB { Light FallenShot }
+Frame BALFC { Light FallenShot2 }
+Frame BALFD { Light FallenShot3 }
+Frame BALFE { Light FallenShot4 }
+Frame BALFF { Light FallenShot5 }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+
+//YETER'EL -- BY ERIANCE
+
+Pointlight Yeter'El1
+{
+Color 1.0 1.0 0.3
+Size 56
+Offset 64 48 0
+}
+
+Pointlight Yeter'El2
+{
+Color 1.0 1.0 0.3
+Size 48
+Offset 64 48 0
+}
+
+Object Yeter'El
+{
+Frame HIERN { Light Yeter'El1 }
+Frame HIERO { Light Yeter'El2 }
+}
+
+Pointlight Hieroball11
+{
+Color 0.6 0.5 0.0
+Size 40
+}
+
+Pointlight Hieroball12
+{
+Color 0.8 0.7 0.0
+Size 40
+}
+
+Pointlight Hieroball13
+{
+Color 0.8 0.7 0.0
+Size 48
+}
+
+Pointlight Hieroball14
+{
+Color 0.6 0.5 0.0
+Size 52
+}
+
+Pointlight Hieroball15
+{
+Color 0.4 0.3 0.0
+Size 56
+}
+
+Pointlight Hieroball16
+{
+Color 0.2 0.1 0.0
+Size 56
+}
+
+Object HieroBall1
+{
+Frame HIB1A { Light Hieroball11 }
+Frame HIB1B { Light Hieroball11 }
+Frame HIB1C { Light Hieroball12 }
+Frame HIB1D { Light Hieroball13 }
+Frame HIB1E { Light Hieroball14 }
+Frame HIB1F { Light Hieroball15 }
+Frame HIB1G { Light Hieroball16 }
+}
+
+Pointlight Hieroball21
+{
+Color 1.0 1.0 0.4
+Size 32
+}
+
+Pointlight Hieroball22
+{
+Color 0.9 0.9 0.3
+Size 30
+}
+
+Pointlight Hieroball23
+{
+Color 0.8 0.8 0.2
+Size 28
+}
+
+Pointlight Hieroball24
+{
+Color 0.7 0.7 0.1
+Size 26
+}
+
+Pointlight Hieroball25
+{
+Color 0.6 0.6 0.0
+Size 24
+}
+
+Pointlight Hieroball26
+{
+Color 0.5 0.5 0.0
+Size 22
+}
+
+Pointlight Hieroball27
+{
+Color 0.4 0.4 0.0
+Size 20
+}
+
+Object HieroBall2
+{
+Frame HIB2A { Light Hieroball21 }
+Frame HIB2B { Light Hieroball21 }
+Frame HIB2C { Light Hieroball21 }
+Frame HIB2D { Light Hieroball21 }
+Frame HIB2E { Light Hieroball22 }
+Frame HIB2F { Light Hieroball23 }
+Frame HIB2G { Light Hieroball24 }
+Frame HIB2H { Light Hieroball25 }
+Frame HIB2I { Light Hieroball26 }
+Frame HIB2J { Light Hieroball27 }
+}
+
+Pointlight CurseBall1
+{
+Color 0.7 0.0 0.7
+Size 56
+}
+
+Pointlight CurseBall2
+{
+Color 0.6 0.0 0.6
+Size 56
+}
+
+Pointlight CurseBall3
+{
+Color 0.6 0.0 0.6
+Size 52
+}
+
+Pointlight CurseBall4
+{
+Color 0.5 0.0 0.5
+Size 48
+}
+
+Pointlight CurseBall5
+{
+Color 0.4 0.0 0.4
+Size 44
+}
+
+Pointlight CurseBall6
+{
+Color 0.3 0.0 0.3
+Size 40
+}
+
+Object CurseBall
+{
+Frame CURSA { Light CurseBall1 }
+Frame CURSB { Light CurseBall1 }
+Frame CURSC { Light CurseBall1 }
+Frame CURSD { Light CurseBall1 }
+Frame CURSE { Light CurseBall2 }
+Frame CURSF { Light CurseBall3 }
+Frame CURSG { Light CurseBall4 }
+Frame CURSH { Light CurseBall5 }
+Frame CURSI { Light CurseBall6 }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+
+//SPIRIT SOUL -- BY RAVICK
+
+Pointlight SPIRITBall1
+{
+Color 1.0 1.0 1.0
+Size 40
+}
+
+Pointlight SPIRITBall2
+{
+Color 1.0 1.0 1.0
+Size 44
+}
+
+Pointlight SPIRITBall3
+{
+Color 1.0 1.0 1.0
+Size 48
+}
+
+Pointlight SPIRITBall4
+{
+Color 1.0 1.0 1.0
+Size 36
+}
+
+Pointlight SPIRITBall5
+{
+Color 1.0 1.0 1.0
+Size 32
+}
+
+Pointlight SPIRITBall6
+{
+Color 1.0 1.0 1.0
+Size 28
+}
+
+Pointlight SPIRITBall7
+{
+Color 1.0 1.0 1.0
+Size 24
+}
+
+Pointlight SPIRITBall8
+{
+Color 1.0 1.0 1.0
+Size 20
+}
+
+Pointlight SPIRITBall9
+{
+Color 1.0 1.0 1.0
+Size 16
+}
+
+Object SoulHarvesterBall3
+{
+Frame SiBAA { Light SPIRITBall1 }
+Frame SiBAB { Light SPIRITBall1 }
+Frame SiBAC { Light SPIRITBall2 }
+Frame SIBAD { Light SPIRITBall3 }
+Frame SIBAE { Light SPIRITBall2 }
+Frame SIBAF { Light SPIRITBall1 }
+Frame SIBAG { Light SPIRITBall4 }
+Frame SIBAH { Light SPIRITBall5 }
+Frame SIBAI { Light SPIRITBall6 }
+Frame SIBAJ { Light SPIRITBall7 }
+Frame SIBAK { Light SPIRITBall8 }
+Frame SIBAL { Light SPIRITBall9 }
+}
+
+Object SoulSPIRIT
+{
+Frame SPIRA { Light SPIRITBall1 }
+Frame SPIRB { Light SPIRITBall1 }
+Frame SPIRC { Light SPIRITBall2 }
+Frame SPIRD { Light SPIRITBall3 }
+Frame SPIRE { Light SPIRITBall2 }
+Frame SPIRF { Light SPIRITBall1 }
+Frame SPIRG { Light SPIRITBall4 }
+Frame SPIRH { Light SPIRITBall5 }
+Frame SPIRI { Light SPIRITBall6 }
+Frame SPIRJ { Light SPIRITBall7 }
+Frame SPIRK { Light SPIRITBall8 }
+Frame SPIRL { Light SPIRITBall9 }
+}
+
+Object SoulSPIRIT2
+{
+Frame SPIRA { Light SPIRITBall1 }
+Frame SPIRB { Light SPIRITBall1 }
+Frame SPIRC { Light SPIRITBall2 }
+Frame SPIRD { Light SPIRITBall3 }
+Frame SPIRE { Light SPIRITBall2 }
+Frame SPIRF { Light SPIRITBall1 }
+Frame SPIRG { Light SPIRITBall4 }
+Frame SPIRH { Light SPIRITBall5 }
+Frame SPIRI { Light SPIRITBall6 }
+Frame SPIRJ { Light SPIRITBall7 }
+Frame SPIRK { Light SPIRITBall8 }
+Frame SPIRL { Light SPIRITBall9 }
+}
+
+Object SoulSPIRIT3
+{
+Frame SPIRA { Light SPIRITBall1 }
+Frame SPIRB { Light SPIRITBall1 }
+Frame SPIRC { Light SPIRITBall2 }
+Frame SPIRD { Light SPIRITBall3 }
+Frame SPIRE { Light SPIRITBall2 }
+Frame SPIRF { Light SPIRITBall1 }
+Frame SPIRG { Light SPIRITBall4 }
+Frame SPIRH { Light SPIRITBall5 }
+Frame SPIRI { Light SPIRITBall6 }
+Frame SPIRJ { Light SPIRITBall7 }
+Frame SPIRK { Light SPIRITBall8 }
+Frame SPIRL { Light SPIRITBall9 }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+// ========== GLOW =========
+//Texture "flat name", color[, glow height] [, fullbright]
+Glow
+{
+	NUKAGE1
+	NUKAGE2
+	NUKAGE3
+	F_SKY1
+	LAVA1
+	LAVA2
+	LAVA3
+	LAVA4
+	
+	Texture "NUKAGE1", 00AA11 , 72
+	Texture "NUKAGE2", 00AA11 , 72
+	Texture "NUKAGE3", 00AA11 , 72
+	Texture "F_SKY1", AA8855 , 128
+	Texture "FWATER1", 0001BB , 48
+	Texture "FWATER2", 0001BB , 48
+	Texture "FWATER3", 0001BB , 48
+	Texture "FWATER4", 0001BB , 48
+	Texture "LAVA1", FF6611, 96, fullbright
+	Texture "LAVA2", FF6611, 96, fullbright
+	Texture "LAVA3", FF6611, 96, fullbright
+	Texture "LAVA4", FF6611, 96, fullbright
+	Texture "BLOOD1", BB0100 , 32
+	Texture "BLOOD2", BB0100 , 32
+	Texture "BLOOD3", BB0100 , 32
+	Texture "RROCK01", DD0800 , 48
+	Texture "RROCK02", FFAA00 , 48
+	Texture "RROCK05", DD0800 , 40
+	Texture "RROCK06", DD0800 , 32
+	Texture "RROCK07", DD0800 , 24
+	Texture "RROCK08", DD0800 , 16
+	Texture "SLIME01", 664400 , 56
+	Texture "SLIME02", 664400 , 56
+	Texture "SLIME03", 664400 , 56
+	Texture "SLIME04", 664400 , 56
+	Texture "SLIME05", 664400 , 40
+	Texture "SLIME06", 664400 , 40
+	Texture "SLIME07", 664400 , 40
+	Texture "SLIME08", 664400 , 40
+	Texture "SLIME09", FF0100 , 32
+	Texture "SLIME10", FF0100 , 24
+	Texture "SLIME11", FF0100 , 16
+	Texture "SLIME12", FF0100 , 8
+}
+
+
+
+//+++++++++++++++++++++++++++++++++++++++
+// Some Ravick's lights
+
+Object SoulSPIRIT
+{
+Frame SIBAA { Light SPIRITBall1 }
+Frame SIBAB { Light SPIRITBall1 }
+Frame SIBAC { Light SPIRITBall2 }
+Frame SIBAD { Light SPIRITBall3 }
+Frame SIBAE { Light SPIRITBall2 }
+Frame SIBAF { Light SPIRITBall1 }
+Frame SIBAG { Light SPIRITBall4 }
+Frame SIBAH { Light SPIRITBall5 }
+Frame SIBAI { Light SPIRITBall6 }
+Frame SIBAJ { Light SPIRITBall7 }
+Frame SIBAK { Light SPIRITBall8 }
+Frame SIBAL { Light SPIRITBall9 }
+}
+
+pointlight LUZ
+{
+    color 1.0 1.0 1.0
+    size 200
+}
+pointlight BRANCA_MENOR
+{
+    color 1.0 1.0 1.0
+    size 50
+}
+
+pointlight BRANCA_AINDA_MENOR
+{
+    color 1.0 1.0 1.0
+    size 15
+}
+
+/*object Lampada
+{
+frame LAMPA { light LUZ }
+}*/
+
+object Luz_branca_menor
+{
+frame LAMPA { light BRANCA_MENOR }
+}
+
+object Luz_branca_menor2
+{
+frame LAMPA { light BRANCA_MENOR }
+}
+
+object Luz_branca_menor3
+{
+frame LAMPA { light BRANCA_MENOR }
+}
+
+object Luz_branca_Ainda_menor
+{
+frame LAMPA { light BRANCA_AINDA_MENOR }
+}

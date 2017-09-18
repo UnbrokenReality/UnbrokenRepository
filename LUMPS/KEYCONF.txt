@@ -1,0 +1,16 @@
+// === THE UNBROKEN REALITY KEYCONF ====
+// Made by HEISENBERG
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+clearplayerclasses
+addplayerclass UnbrokenHero
+
+weaponsection "Unbroken Weapons"
+
+setslot 1 UnbrokenFist  UnbrokenChainsaw
+setslot 2 UnbrokenPistol           
+setslot 3 UnbrokenShotgun UnbrokenSuperShotgun
+setslot 4 UnbrokenChaingun
+setslot 5 UnbrokenRocketLauncher
+setslot 6 UnbrokenPlasmaRifle Railgun
+setslot 7 UnbrokenBFG9000

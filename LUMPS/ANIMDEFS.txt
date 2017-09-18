@@ -1,0 +1,462 @@
+// =========== ANIMMATIONS DEFINITIONS OF UNBROKEN REALITY ==================
+// Compiled by HEISENBERG
+// Some tips taken from my great friend Daniel (NeoDoomGuy)
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+// =============================== .: PORTRAITS :. ============================= 
+
+texture n01
+		pic n01 tics 250
+		pic m01 tics 250
+
+texture n02
+		pic n02 tics 250
+		pic m02 tics 250
+		
+texture n03
+		pic n03 tics 250
+		pic m03 tics 250
+
+texture n04
+		pic n04 tics 250
+		pic m04 tics 250
+
+texture n05
+		pic n05 tics 250
+		pic m05 tics 250
+
+texture n06
+		pic n06 tics 250
+		pic m06 tics 250
+		
+texture n07
+		pic n07 tics 250
+		pic m07 tics 250
+		
+texture n08
+		pic n08 tics 250
+		pic m08 tics 250
+		
+texture n09
+		pic n09 tics 250
+		pic m09 tics 250
+		
+texture n10
+		pic n10 tics 250
+		pic m10 tics 250
+		
+texture n11
+		pic n11 tics 250
+		pic m11 tics 250
+		
+texture n12
+		pic n12 tics 250
+		pic m12 tics 250
+
+
+// =============================== .: TEXTURES WARPS :. ======================== 
+
+//SPIRIT IMP ANIMDEFs by GhastlyDragon and Tormentor667
+warp2 texture SPIPA1
+warp2 texture SPIPA2A8
+warp2 texture SPIPA3A7
+warp2 texture SPIPA4A6
+warp2 texture SPIPA5
+warp2 texture SPIPB1
+warp2 texture SPIPB2B8
+warp2 texture SPIPB3B7
+warp2 texture SPIPB4B6
+warp2 texture SPIPB5
+warp2 texture SPIPC1
+warp2 texture SPIPC2C8
+warp2 texture SPIPC3C7
+warp2 texture SPIPC4C6
+warp2 texture SPIPC5
+warp2 texture SPIPD1
+warp2 texture SPIPD2D8
+warp2 texture SPIPD3D7
+warp2 texture SPIPD4D6
+warp2 texture SPIPD5
+warp2 texture SPIPE1
+warp2 texture SPIPE2E8
+warp2 texture SPIPE3E7
+warp2 texture SPIPE4E6
+warp2 texture SPIPE5
+warp2 texture SPIPF1
+warp2 texture SPIPF2F8
+warp2 texture SPIPF3F7
+warp2 texture SPIPF4F6
+warp2 texture SPIPF5
+warp2 texture SPIPG1
+warp2 texture SPIPG2G8
+warp2 texture SPIPG3G7
+warp2 texture SPIPG4G6
+warp2 texture SPIPG5
+warp2 texture SPIPH1
+warp2 texture SPIPH2H8
+warp2 texture SPIPH3H7
+warp2 texture SPIPH4H6
+warp2 texture SPIPH5
+warp2 texture SPIPI1
+warp2 texture SPIPI2I8
+warp2 texture SPIPI3I7
+warp2 texture SPIPI4I6
+warp2 texture SPIPI5
+warp2 texture SPIPJ1
+warp2 texture SPIPJ2J8
+warp2 texture SPIPJ3J7
+warp2 texture SPIPJ4J6
+warp2 texture SPIPJ5
+warp2 texture SPIPK1
+warp2 texture SPIPK2K8
+warp2 texture SPIPK3K7
+warp2 texture SPIPK4K6
+warp2 texture SPIPK5
+warp2 texture SPIPL1
+warp2 texture SPIPL2L8
+warp2 texture SPIPL3L7
+warp2 texture SPIPL4L6
+warp2 texture SPIPL5
+warp2 texture SPIPM1
+warp2 texture SPIPM2M8
+warp2 texture SPIPM3M7
+warp2 texture SPIPM4M6
+warp2 texture SPIPM5
+warp2 texture SPIPO0
+warp2 texture SPIPP0
+warp2 texture SPIPQ0
+warp2 texture SPIPR0
+warp2 texture SPIPS0
+warp2 texture SPIPT0
+warp2 texture SPIPV0
+
+// ============  ORIGINAL DOOOM 2 TEXTURES WARPS ===============
+
+//SLIMEFALLS
+warp2 texture SFALL1
+warp2 texture SFALL2
+warp2 texture SFALL3
+warp2 texture SFALL4
+
+//BLOODFALLS
+warp2 texture BFALL1
+warp2 texture BFALL2
+warp2 texture BFALL3
+warp2 texture BFALL4
+
+//SNAKES 1
+warp2 texture SNAK7_1
+
+//SNAKES 2
+warp2 texture SNAK8_1
+
+//HELL
+warp2 texture HELL5_1
+warp2 texture HELL5_2
+warp2 texture HELL6_2
+warp2 texture WALL25_1
+
+// ============  ORIGINAL DOOM 2 FLATS WARPS ===============
+
+//WATER
+WARP2 FLAT FWATER1
+WARP2 FLAT FWATER2
+WARP2 FLAT FWATER3
+WARP2 FLAT FWATER4
+
+//NUKAGE
+WARP2 FLAT NUKAGE1
+WARP2 FLAT NUKAGE2
+WARP2 FLAT NUKAGE3
+
+//BLOOD
+WARP2 FLAT BLOOD1
+WARP2 FLAT BLOOD2
+WARP2 FLAT BLOOD3
+
+//SLIME
+WARP2 FLAT SLIME01
+WARP2 FLAT SLIME02
+WARP2 FLAT SLIME03
+WARP2 FLAT SLIME04
+WARP2 FLAT SLIME05
+WARP2 FLAT SLIME06
+WARP2 FLAT SLIME07
+WARP2 FLAT SLIME08
+
+//SNAKE FLOOR
+WARP2 FLAT SFLR6_1
+WARP2 FLAT SFLR6_4
+WARP2 FLAT SFLR7_1
+WARP2 FLAT SFLR7_4
+
+//LAVA FLOOR
+warp2 flat LAVA1
+warp2 flat LAVA2
+warp2 flat LAVA3
+warp2 flat LAVA4
+
+// ============  UNBROKEN REALITY FLATS WARPS ===============
+
+//RED SNAKE
+WARP FLAT HESNAK01
+
+//CORPSE RIVER
+WARP FLAT HEFLOR12
+
+//SKY
+warp flat SKYSP2
+
+	
+TEXTURE FWATER1
+PIC  1	 TICS  1
+PIC  1	 TICS  1
+
+TEXTURE NUKAGE1
+PIC  1	 TICS  1
+PIC  1	 TICS  1
+
+TEXTURE BLOOD1
+PIC  1	 TICS  1
+PIC  1	 TICS  1
+
+TEXTURE SLIME01
+PIC  1	 TICS  1
+PIC  1	 TICS  1
+
+TEXTURE SLIME05
+PIC  1	 TICS  1
+PIC  1	 TICS  1
+
+TEXTURE SFALL1
+PIC  1	 TICS  4
+PIC  2	 TICS  4
+PIC  3	 TICS  4
+PIC  4	 TICS  4
+
+TEXTURE BBFALL1
+PIC  1	 TICS  4
+PIC  2	 TICS  4
+PIC  3	 TICS  4
+PIC  4	 TICS  4
+
+flat BLOOD1
+pic BLOOD1 tics 1
+pic BLOOD1 tics 1
+flat BLOOD2
+pic BLOOD1 tics 1
+pic BLOOD1 tics 1
+flat BLOOD3
+pic BLOOD1 tics 1
+pic BLOOD1 tics 1
+
+flat FWATER1
+pic FWATER1 tics 1
+pic FWATER1 tics 1
+flat FWATER2
+pic FWATER1 tics 1
+pic FWATER1 tics 1
+flat FWATER3
+pic FWATER1 tics 1
+pic FWATER1 tics 1
+flat FWATER4
+pic FWATER1 tics 1
+pic FWATER1 tics 1
+
+flat SLIME01
+pic SLIME01 tics 1
+pic SLIME01 tics 1
+flat SLIME02
+pic SLIME02 tics 1
+pic SLIME02 tics 1
+flat SLIME03
+pic SLIME03 tics 1
+pic SLIME03 tics 1
+flat SLIME04
+pic SLIME04 tics 1
+pic SLIME04 tics 1
+flat SLIME05
+pic SLIME05 tics 1
+pic SLIME05 tics 1
+flat SLIME06
+pic SLIME06 tics 1
+pic SLIME06 tics 1
+flat SLIME07
+pic SLIME07 tics 1
+pic SLIME07 tics 1
+flat SLIME08
+pic SLIME08 tics 1
+pic SLIME08 tics 1
+
+flat LAVA1
+pic LAVA1 tics 1
+pic LAVA1 tics 1
+flat LAVA2
+pic LAVA1 tics 1
+pic LAVA1 tics 1
+flat LAVA3
+pic LAVA1 tics 1
+pic LAVA1 tics 1
+flat LAVA4
+pic LAVA1 tics 1
+pic LAVA1 tics 1
+
+flat NUKAGE1
+pic NUKAGE1 tics 1
+pic NUKAGE1 tics 1
+flat NUKAGE2
+pic NUKAGE1 tics 1
+pic NUKAGE1 tics 1
+flat NUKAGE3
+pic NUKAGE1 tics 1
+pic NUKAGE1 tics 1
+
+// ============  UNBROKEN REALITY TEXTURES ANIMATIONS ===============
+
+// HELLO PORTAL
+texture portal1
+     	pic portal1 tics 3
+	    pic portal2 tics 3
+	    pic portal3 tics 3
+    	pic portal4 tics 3
+	    pic portal5 tics 3
+        pic portal6 tics 3
+        pic portal7 tics 3
+        pic portal8 tics 3
+        pic portal9 tics 3
+
+// DEMON HEAD
+texture demon1
+		pic demon1  tics 10
+        pic demon2  tics 10
+		
+// FORCE FIELD    
+texture p_force1        
+	    pic p_force1 tics 3
+        pic p_force2 tics 3
+		pic p_force3 tics 3
+		pic p_force4 tics 3
+        
+// FORCE FIELD  		
+texture p_force5
+        pic p_force5 tics 3
+        pic p_force6 tics 3
+        pic P_force7 tics 3
+        pic p_force8 tics 3
+        
+// STRIFE MONITORS
+texture P_GRDCP1
+        pic P_GRDCP1 tics 3
+        pic P_GRDCP2 tics 3
+        pic P_GRDCP3 tics 3
+        pic P_GRDCP4 tics 3
+        pic P_GRDCP5 tics 3
+        pic P_GRDCP6 tics 3
+        pic P_GRDCP7 tics 3
+        pic P_GRDCP8 tics 3
+        
+texture P_MCOM01
+        pic P_MCOM01 tics 3
+        pic P_MCOM02 tics 3
+        pic P_MCOM03 tics 3
+        pic P_MCOM04 tics 3
+        
+texture P_MCOM05
+        pic P_MCOM05 tics 3
+        pic P_MCOM06 tics 3
+        pic P_MCOM07 tics 3
+        pic P_MCOM08 tics 3
+        
+texture P_MCOM09
+        pic P_MCOM09 tics 3
+        pic P_MCOM10 tics 3
+        pic P_MCOM11 tics 3
+        pic P_MCOM12 tics 3
+        
+texture P_MCOM13
+        pic P_MCOM13 tics 3
+        pic P_MCOM14 tics 3
+        pic P_MCOM15 tics 3
+        pic P_MCOM16 tics 3
+        
+texture P_MIND01
+        pic P_MIND01 tics 3
+        pic P_MIND02 tics 3
+        pic P_MIND03 tics 3
+        pic P_MIND04 tics 3
+        
+texture P_MNTO10
+        pic P_mntor1 tics 3
+        pic P_mntor2 tics 3
+        pic P_mntor3 tics 3
+        pic P_mntor4 tics 3
+        pic P_mntor5 tics 3
+        pic P_mntor6 tics 3
+        pic P_mntor7 tics 3
+        pic P_mntor8 tics 3
+        pic P_mntor9 tics 3
+        
+texture P_TMOGR1
+        pic P_TMOGR1 tics 3
+        pic P_TMOGR1 tics 3
+        pic P_TMOGR1 tics 3
+
+// NEW HELL FIRE
+texture W_245
+        pic W_245 tics 3
+        pic W_246 tics 3
+        pic W_247 tics 3
+        pic W_248 tics 3
+
+// NEO DOOM COMPUTER
+Texture INCOMP1
+	    Pic INCOMP1 tics 8
+     	Pic INCOMP2 tics 8
+    	Pic INCOMP3 tics 8
+    	Pic INCOMP4 tics 8
+    	Pic INCOMP5 tics 8
+	    Pic INCOMP6 tics 8
+	    Pic INCOMP7 tics 8
+		Pic INCOMP8 tics 8
+
+// NEW DOOM BASED TEXTURES
+Texture INSCRN1
+	    Pic INSCRN1 tics 8
+	    Pic INSCRN2 tics 8
+		Pic INSCRN3 tics 8
+	    Pic INSCRN4 tics 8
+		
+Texture BBFALL1
+	    Pic  BBFALL1	 TICS  4
+        Pic  BBFALL2	 TICS  4
+		Pic  BBFALL3	 TICS  4
+		Pic  BBFALL4	 TICS  4
+
+texture CBRAA0
+pic  1  tics  1
+pic  2  tics  1
+
+texture BSCREEN1
+pic  1  tics  10
+pic  2  tics  10
+pic  3  tics  10
+pic  4  tics  10
+
+texture DOSHA1
+pic  1  tics  8
+pic  2  tics  8
+pic  3  tics  8
+pic  4  tics  8
+pic  5  tics  8
+pic  6  tics  8
+
+// Ravick ravickando, riariaria:
+// =============================== .: CAMERA TEXTURES :. ====================== 
+
+
+cameratexture UBCAMTX1 64 128// fit 100 100
+cameratexture UBCAMTX2 64 128
+cameratexture UBCAMTX3 64 64
+cameratexture UBCAMTX4 64 64
+//cameratexture UBCAMTX5 64 64 fit 32 32
+cameratexture UBCAMTX5 128 128

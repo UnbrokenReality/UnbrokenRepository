@@ -1,0 +1,268 @@
+// ====  SOUNDS OF UNBROKEN REALITY ====
+// Compiled by HEISENBERG
+// Originally created by [DBR]MegaManx3
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+// NOTE ABOUT THE REPLECEMNTS FOLDER:
+// NEW SFX SOUNDS MADE BY PERKRISTIAN
+
+// =========== AMBIENTS SOUNDS ============
+//CYBER DOOM3
+AMB1   amb1
+
+
+//BETRUGER LAUGH
+AMB2   amb2
+
+
+//AMBIENT LAUGH
+AMB3   amb3
+
+
+//WARNING
+AMB4      amb4
+
+
+//WELCOME TO REVENANT'S LAIR INVERSE
+DS_REVEN         DS_REVEN
+
+
+//THUNDER & WATERFALL
+DSTHUN           DSTHUN
+DSWTRFAL         DSWTRFAL
+
+
+//SMASHING GLASS
+GLASS B          GLASS B
+
+
+//SCREAM WITHOUT AND WITH LAUGH
+GRITOMUL          GRITOMUL
+GRUNRISO          GRUNRISO
+
+
+//HELLO CHILDREN
+HELLO            HELLO
+
+
+//PLEASE HELP ME
+HELPME_A         HELPME_A
+
+
+//WOLFS
+LOBO                LOBO
+LOBORISO        LOBORISO
+
+
+//SUFFERING
+MAONS            MAONS
+
+
+//PASSES
+PASSOS          PASSOS
+
+
+//EVIL LAUGHS
+RISO1           RISO1
+RISO2           RISO2
+RISO3           RISO3
+RISO4           RISO4
+RISO5           RISO5
+RISO6           RISO6
+
+
+//SIREN
+SINO             SINO
+
+
+//ZOMBIE SCREAMS
+ZUMBI1           ZUMBI1 
+ZUMBI2           ZUMBI2
+ZUMBI3           ZUMBI3
+
+// ====== JESSICA VOICE OVER =====
+
+JSA1   JSA1
+JSA2   JSA2
+JSA3   JSA3
+JSA4   JSA4 
+JSA5   JSA5
+JSA6   JSA6
+JSA7   JSA7
+JSA8   JSA8
+JSA9   JSA9
+JSB0   JSB0
+JSB1   JSB1
+JSB2   JSB2
+JSB3   JSB3
+JSB4   JSB4
+JSB5   JSB5
+
+JSB0HAHA               JSB0HAHA
+JSB1MAD                JSB1MAD
+JSB2MINION             JSB2MINION
+JSB3WILL               JSB3WILL
+JSB4SUFFER              JSB4SUFFER
+JSB5DEATH               JSB5DEATH
+
+
+// ===== TERRAIN SOUNDS =====
+// SNDINFO lump with TERRAIN sound definitions
+// made by Daniel -- THANK YOU, TEACHER (:
+// idea based from Enjay's and Corwin's wads
+
+world/watersplash	       dswater
+world/sludgegloop	       dsslime
+world/lavasizzle	       dslava
+world/water                dswater
+world/blood                dsblood
+world/lava                 dslava
+world/slime                dsslime
+world/nuke                 dsnuke
+world/hot                  dshot
+world/grass                dsgrass
+world/ice                  dsice
+world/box                  dsbox
+world/hell                 dshell
+world/skulls               dsskulls
+world/industrial           dsindus1
+world/industrial2          dsindus2
+world/roof                 dsroof
+world/rock                 dsrock
+world/wood                 dswood
+world/nullspace            dsnulspc
+world/defaultterrain       dsdefter
+
+// ==== WEAPONS ====
+
+//RAILGUN by [DBR]MegaManx3
+weapons/railgc                  railgc 
+weapons/railgf                  railgf
+
+
+// ==== MONSTERS ====
+
+//TORTURED SOUL by Xaser
+torturedsoul/sight              trtsit
+torturedsoul/pain               trtpn
+torturedsoul/death              trtdth
+torturedsoul/active             trtact
+torturedsoul/attack             trtatk
+torturedsoul/poison             trtpsn
+
+//HELL GUARD by Espi
+hellguard/sight                 hgsee
+hellguard/death                 hgdeath
+hellguard/idle                  hgidle
+hellguard/shot                  hgshot1
+hellguard/shothit               hgshot2
+
+//SPIRIT IMP by GhastlyDragon and Tormentor667
+SpiritImp/Active	           SPIPACTI
+$Random SpiritImp/Death        { SPIPDEA1 SPIPDEA2 }
+SPIPDEA1		               SPIPDEA1
+SPIPDEA2		               SPIPDEA2
+$Random SpiritImp/Sight        { SPIPSIG1 SPIPSIG2 }
+SPIPSIG1		               SPIPSIG1
+SPIPSIG2		               SPIPSIG2
+harvester/scream               shfbscrm
+harvester/ghost                shghscrm
+
+//BLOT by Captain Toenail
+Blot/Sight		               DSBLOTSE
+Blot/Death		               DSBLOTDI
+
+//LORD OF HERESY by Bouncy and Tormentor667
+LordOfHeresy/sight              LOHSIT
+LordOfHeresy/act                LOHACT
+LordOfHeresy/death              LOHDTH
+
+//ILLUS by GhastlyDragon
+Illus/Active	                ILLSACTI
+Illus/Death		                ILLSDEAT
+Illus/Melee		                ILLSMELE
+Illus/Sight		                ILLSSIGH
+
+//FALLEN by Eriance
+monster/falsit                  dsfalsit
+monster/falpai                  dsfalpai
+monster/faldth                  dsfaldth
+monster/falact                  dsfalact
+monster/falwng                  dsfalwng
+weapons/firmfi                  dsfirmfi
+weapons/firex5                  dsfirex5
+
+//MAELSTROM by TheDarkArchon
+mealstrom/boltcrackle		    maelbolt
+
+//YETER SOUNDS by Eriance
+weapons/firmfi	dsfirmfi
+weapons/firex5	dsfirex5
+monster/hiesit	dshiesit
+monster/hieact	dshieact
+monster/hiepai	dshiepai
+monster/hiedth	dshiedth
+monster/curse1	dscurse1
+monster/curse2	dscurse2 
+
+
+// ======================= BOUNDED MARINE ========================== //
+DSPLDETH	            DSPLDETH
+DSPDIEHI	            DSPDIEHI
+
+$random Bound/Death	{ DSPLDETH DSPDIEHI }
+
+
+
+// ======================= RECOLOCADOS >:( ========================== //
+
+world/thunder DSTHUN //TROVOADA	DSTHUN
+
+
+SNIPERTIRO1	SNIP1
+SNIPERTIRO2	SNIP2
+SNIPERTIRO3	SNIP3
+$Random SNIPERTIRO        { SNIPERTIRO1 SNIPERTIRO2 SNIPERTIRO3 }
+
+AK471		AK47A
+AK472		AK47B
+AK473		AK47C
+$Random AK47TIRO        { AK471 AK472 AK473 }
+
+MARINEPISTOL	SMGFIRE
+
+//++++++
+
+MARINE/SEE1	DSHMSIT1
+MARINE/SEE2	DSHMSIT2
+MARINE/SEE3	DSHMSIT3
+$Random MARINE/SEE        { MARINE/SEE1 MARINE/SEE2 MARINE/SEE3 }
+
+// Ravick's Voice!
+MARINEHEADSHOT	HEADSHOT
+MARINE/MORRE	MORRED
+MARINE/FDP	MORREC
+MARINE/CLEARSHOT CLEARSHO
+MARINE/ZIVUDEU	ZIVUDEU //Idle State
+MARINE/TANAMIRA	TANAMIRA
+MARINE/1SHOT	SHOTKILL
+MARINE/NEEDHELP	NEEDHELP
+MARINE/HEAL	HEALUP
+MARINE/FACKU	PAIN
+
+$Random MARINE/SNIPER/ACT { MARINEHEADSHOT MARINE/CLEARSHOT MARINE/TANAMIRA MARINE/1SHOT}
+
+$Random MARINE/MEDIC/ACT { MARINE/NEEDHELP MARINE/HEAL}
+
+$Random MARINE/MORTE { MARINE/MORRE MARINE/FDP MARINE/FACKU }
+
+//To sem paciência de ir procurar qual o nome deste som no pke do Zdoom...
+
+DSSTNMOVB	DSSTNMOV
+
+//Coisa do Ravick...um gongo! aff
+GONG		GONG
+
+nao/achei/no/sndinfo/do/zdoom	DSFLAMST
+
+WTFBOOM	WTFBOOM//Tava no original...

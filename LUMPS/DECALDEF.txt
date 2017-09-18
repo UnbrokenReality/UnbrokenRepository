@@ -1,0 +1,46 @@
+//==================== THE UNBROKEN REALITY DECALDEFINITONS ===============
+// Compiled and created by HEISENBERG
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+//SKULLSCORCH
+decal SkullScorch1 
+{ 
+   pic PLASMA1 
+   shade "00 00 00" 
+   x-scale 0.6 
+   y-scale 0.6 
+   randomflipx 
+   randomflipy 
+} 
+
+decal SkullScorch2 
+{ 
+   pic PLASMA2 
+   shade "00 00 00" 
+   x-scale 0.6 
+   y-scale 0.6 
+   randomflipx 
+   randomflipy 
+} 
+
+decalgroup SkullScorch 
+{ 
+   SkullScorch1   1 
+   SkullScorch2   1 
+} 
+
+//FALLEN
+Decal FallenBall
+{
+Pic PLASMA1
+Shade "00 00 00"
+X-Scale 0.5
+Y-Scale 0.5
+RandomFlipX
+RandomFlipY
+}
+
+Generator FallenShot FallenBall
+
+//HELL'S GUARD
+generator HellGuardBall		SkullScorch

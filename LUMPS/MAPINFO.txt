@@ -1,0 +1,182 @@
+// =============== UNBROKEN REALITY MAPS INFORMATION ====================
+// Compiled by HEISENBERG.
+// Originally created by [DBR]MegaManx3
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+// ====================== EPISODES ==========================
+clearepisodes
+
+episode PROLOGUE
+name "The Unbroken Reality"
+key 1
+
+// ====================== SKILLS ==========================
+clearskills
+
+skill easy1
+Aggressiveness 0
+ammofactor 2.0
+doubleammofactor 0.5
+damagefactor 0.5
+SpawnFilter "easy"
+ACSReturn 1
+respawntime 0
+easybossbrain 
+name "Jesus Superstar"
+mustconfirm "Are you sure? This skill isn't even remotely fair for the monsters... Y/N" 
+textcolor "red"
+
+skill normal1
+Aggressiveness 0
+ammofactor 1.5
+doubleammofactor 0.5
+damagefactor 0.5
+SpawnFilter "normal"
+ACSReturn 2
+respawntime 0
+name "Chavo del Ocho"
+mustconfirm "A special skill dedicated to the great actor Don Ramon... Y/N" 
+textcolor "red"
+
+skill hard1
+Aggressiveness 0.5
+ammofactor 1.0
+doubleammofactor 0.5
+damagefactor 1.0
+SpawnFilter "hard"
+ACSReturn 4
+respawntime 0
+name "NeoDoom"
+mustconfirm "Only YOU can destroy hellspawn forever! Y/N" 
+textcolor "red"
+
+skill hard2
+Aggressiveness 1.0
+ammofactor 0.2
+doubleammofactor 0
+damagefactor 5.0
+SpawnFilter "nightmare"
+ACSReturn 5
+disablecheats 
+respawntime 10
+respawnlimit 0
+fastmonsters
+name "Guitar Hero Master"
+mustconfirm "It's dragonforce! Y/N" 
+textcolor "red"
+
+
+// ====================== CHAPTERS ==========================
+
+map TITLEMAP "THE UNBROKEN REALITY"
+nointermission
+
+// === EPISODE 1 ===
+
+map PROLOGUE "THE EVILUTION IS COMING"
+sky1 DOENITE 
+sky2 DOSNITE 0.1
+forcenoskystretch
+next U1M1
+nointermission
+
+map U1M1 "MY WORST NIGHTMARE"
+next U1M2
+cluster 1
+nointermission
+
+map U1M2 "A STRANGE MEMORY"
+next U1M3
+sky1 "STARRY"
+par 300
+cluster 2
+nointermission
+
+map U1M3 "THE LOST HUMANITY"
+next U1M4
+sky1 "SKY2"
+cluster 3
+nointermission
+
+map U1M4 "A TICKET OUT OF HERE, UAC"
+next U1M5
+sky1 rsky1 0.01
+cluster 4
+nointermission
+
+map U1M5 "WORKING IN PROGRESS"
+next U1M6
+nointermission
+
+map U1M6 "THE COLDEST PLACE IN MY HEAD..."
+next U1M7
+sky1  RSKY4 0
+cluster 5
+nointermission
+
+map U1M7 "VACATIONS FROM HELL"
+next U1M8
+par 1111
+sky1 STARRY 1
+sky2 FWATER1 0
+nointermission
+
+map U1M8 "UNBROKEN'S INFERNO"
+nointermission
+next CREDITS
+sky1 RSKY3 0.01
+
+// == CLUSTERS ==
+clusterdef 1
+music UB4
+exittext "What the hell was that?
+Was it a nightmare?
+Am I still sleeping?
+Or I died?
+What is happening to me?
+
+... or what will happen next?
+Something is fucking wrong...
+ 
+I can't control any of this..."
+
+clusterdef 2
+music UB4
+exittext "What the FUCK is happening to me?
+I rembember some experiments of the UAC 
+with monsters... But this isn't real, is it?
+What happened to my team of marines at Io...
+Oh... fucking fuck...
+
+And who is this fucking Jessica, anyway?"
+
+clusterdef 3
+music UB4
+exittext "It's seems that I saved my humanity 
+afterall... 
+This woman... 
+This Jessica... 
+She seem's the only fucking thing in this 
+fucking world that are helpin' me...
+
+I'm must find her again... 
+... before these demons find me first!"
+
+clusterdef 4
+music UB4
+exittext "The high speed trains of UAC...
+It's has been some time since I saw them... 
+A very long time...
+A time before Hell on Earth....
+
+Oh, fuck it.
+
+It's over now, Jessica! 
+I demand my fucking answers!
+Help me for fuck's sake!"
+
+clusterdef 5
+music UB4
+exittext "If I can control this dream...
+Well time to go to my ship.
+It's time for a vacation!"

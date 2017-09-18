@@ -1,0 +1,12 @@
+// ====  SOUNDS SEQUENCES OF UNBROKEN REALITY ====
+// Compiled by HEISENBERG
+// Created by RAVICK
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+
+:Porta1
+   door 0
+   playuntildone dsbarexp
+   playrepeat plats/pt1_mid
+   stopsound dsbarexp//dsdorcls
+end
