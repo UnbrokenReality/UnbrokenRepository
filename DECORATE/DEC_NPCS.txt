@@ -1,0 +1,565 @@
+// ========================= THE UNBROKEN REALITY NPCS ========================
+// Compiled by Heisenberg
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+// ==================== EPISODE ONE ========================== //
+
+
+///////////////////////////////////////////////////////////////////////////////
+//================================================================
+//================================================================
+//
+//	                  JESSICA
+//
+//================================================================
+//          SPRITES TAKEN FROM 128SKINS.WAD BY DANIEL
+//
+//	          DECORATE BY [DBR]MEGAMANX3
+//
+//
+//================================================================
+
+actor Jessica 10130
+{
+
+  spawnid 162
+  	//$Category "Unbroken NPCs"
+  obituary "%o was killed by Jessica."
+  health 200
+  radius 20
+  height 56
+  mass 100
+  speed 8
+  painchance 200
+  seesound "grunt/sight"
+  attacksound "grunt/attack"
+  painsound "grunt/pain"
+  deathsound "grunt/death"
+  activesound "grunt/active"
+  dropitem "Clip" 256
+  MONSTER
+  +FLOORCLIP
+  states
+  {
+  Spawn:
+    SIR1 AB 10 A_Look
+    loop
+  See:
+    SIR1 AABBCCDD 4 A_Chase
+    loop
+  Missile:
+    SIR1 E 10 A_FaceTarget
+    SIR1 F 8 A_PosAttack
+    SIR1 E 8
+    goto See
+  Pain:
+    SIR1 G 3
+    SIR1 G 3 A_Pain
+    goto See
+  Death:
+    SIR1 H 5
+    SIR1 I 5 A_Scream
+    SIR1 J 5 A_NoBlocking
+    SIR1 K 5
+    SIR1 L 5
+    SIR1 M 5
+    SIR1 N 5
+    stop
+  XDeath:
+    SIR1 M 5
+    SIR1 N 5 A_XScream
+    SIR1 O 5 A_NoBlocking
+    SIR1 PQRST 5
+    SIR1 U 5
+    SIR1 V 5
+    SIR1 W 5
+    stop
+  Raise:
+    SIR1 KJIH 5
+    goto See
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+// ==================== EPISODE TWO ========================== //
+
+
+//================================================================
+//================================================================
+//
+//	         CAPT. KURT H. THOMPSON
+//
+//================================================================
+//          SPRITES TAKEN FROM 128SKINS.WAD BY DANIEL
+//
+//	          DECORATE BY HEISENBERG
+//
+//
+//================================================================
+
+actor Capt.Kurt 10126
+{
+  spawnid 157
+ //$Category "Unbroken NPCs"
+  obituary "%o was killed by Capt. Kurt H. Thompson."
+  health 200
+  radius 20
+  height 56
+  mass 100
+  speed 8
+  painchance 200
+  seesound "grunt/sight"
+  attacksound "grunt/attack"
+  painsound "grunt/pain"
+  deathsound "grunt/death"
+  activesound "grunt/active"
+  dropitem "Clip" 256
+  MONSTER
+  +FLOORCLIP
+  states
+  {
+  Spawn:
+    PLY2 AB 10 A_Look
+    loop
+  See:
+    PLY2 AABBCCDD 4 A_Chase
+    loop
+  Missile:
+    PLY2 E 10 A_FaceTarget
+    PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+	PLY2 F 8 A_CyberAttack
+    PLY2 E 8
+    goto See
+  Pain:
+    PLY2 G 3
+    PLY2 G 3 A_Pain
+    goto See
+  Death:
+    PLY2 H 5
+    PLY2 I 5 A_Scream
+    PLY2 J 5 A_NoBlocking
+    PLY2 K 5
+    PLY2 L 5
+    PLY2 M 5
+    PLY2 N 5
+    stop
+  XDeath:
+    PLY2 M 5
+    PLY2 N 5 A_XScream
+    PLY2 O 5 A_NoBlocking
+    PLY2 PQRST 5
+    PLY2 U 5
+    PLY2 V 5
+    PLY2 W 5
+    stop
+  Raise:
+    PLY2 KJIH 5
+    goto See
+  }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+//================================================================
+//================================================================
+//
+//	            CORP. ERIC V. CAMPBELL
+//
+//================================================================
+//          SPRITES TAKEN FROM 128SKINS.WAD BY DANIEL
+//
+//	          DECORATE BY HEISENBERG
+//
+//
+//================================================================
+
+actor Corp.Eric 10127
+{
+  spawnid 158
+ //$Category "Unbroken NPCs"
+  obituary "%o was killed by Corp. Eric V. Campbell."
+  health 200
+  radius 20
+  height 56
+  mass 100
+  speed 8
+  painchance 200
+  seesound "grunt/sight"
+  attacksound "grunt/attack"
+  painsound "grunt/pain"
+  deathsound "grunt/death"
+  activesound "grunt/active"
+  dropitem "Clip" 256
+  MONSTER
+  +FLOORCLIP
+  states
+  {
+  Spawn:
+    VAR3 AB 10 A_Look
+    loop
+  See:
+    VAR3 AABBCCDD 4 A_Chase
+    loop
+  Missile:
+    VAR3 E 10 A_FaceTarget
+    VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+	VAR3 F 8 A_CyberAttack
+    VAR3 E 8
+    goto See
+  Pain:
+    VAR3 G 3
+    VAR3 G 3 A_Pain
+    goto See
+  Death:
+    VAR3 H 5
+    VAR3 I 5 A_Scream
+    VAR3 J 5 A_NoBlocking
+    VAR3 K 5
+    VAR3 L 5
+    VAR3 M 5
+    VAR3 N 5
+    stop
+  XDeath:
+    VAR3 M 5
+    VAR3 N 5 A_XScream
+    VAR3 O 5 A_NoBlocking
+    VAR3 PQRST 5
+    VAR3 U 5
+    VAR3 V 5
+    VAR3 W 5
+    stop
+  Raise:
+    VAR3 KJIH 5
+    goto See
+  }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+//================================================================
+//================================================================
+//
+//	            CORP. VICTORIA L. ANDERSON
+//
+//================================================================
+//          SPRITES TAKEN FROM 128SKINS.WAD BY DANIEL
+//
+//	          DECORATE BY HEISENBERG
+//
+//
+//================================================================
+
+actor Corp.Victoria 10128
+{
+  spawnid 159
+ //$Category "Unbroken NPCs"
+  obituary "%o was killed by Corp. Victoria L. Anderson."
+  health 200
+  radius 20
+  height 56
+  mass 100
+  speed 8
+  painchance 200
+  seesound "grunt/sight"
+  attacksound "grunt/attack"
+  painsound "grunt/pain"
+  deathsound "grunt/death"
+  activesound "grunt/active"
+  dropitem "Clip" 256
+  MONSTER
+  +FLOORCLIP
+  states
+  {
+  Spawn:
+    RIPL AB 10 A_Look
+    loop
+  See:
+    RIPL AABBCCDD 4 A_Chase
+    loop
+  Missile:
+    RIPL E 10 A_FaceTarget
+    RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+	RIPL F 8 A_CyberAttack
+    RIPL E 8
+    goto See
+  Pain:
+    RIPL G 3
+    RIPL G 3 A_Pain
+    goto See
+  Death:
+    RIPL H 5
+    RIPL I 5 A_Scream
+    RIPL J 5 A_NoBlocking
+    RIPL K 5
+    RIPL L 5
+    RIPL M 5
+    RIPL N 5
+    stop
+  XDeath:
+    RIPL M 5
+    RIPL N 5 A_XScream
+    RIPL O 5 A_NoBlocking
+    RIPL PQRST 5
+    RIPL U 5
+    RIPL V 5
+    RIPL W 5
+    stop
+  Raise:
+    RIPL KJIH 5
+    goto See
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+//================================================================
+//================================================================
+//
+//	         SGT. BILL "BIG BILL" WILLIAMSON
+//
+//================================================================
+//          SPRITES TAKEN FROM 128SKINS.WAD BY DANIEL
+//
+//	          DECORATE BY [DBR]MEGAMANX3
+//
+//
+//================================================================
+
+actor Sgt.BigBill 10125
+{
+  spawnid 160
+ //$Category "Unbroken NPCs"
+  obituary "%o was killed by Sgt. Big Bill Williamson."
+  health 200
+  radius 20
+  height 56
+  mass 100
+  speed 8
+  painchance 200
+  seesound "grunt/sight"
+  attacksound "grunt/attack"
+  painsound "grunt/pain"
+  deathsound "grunt/death"
+  activesound "grunt/active"
+  dropitem "Clip" 256
+  MONSTER
+  +FLOORCLIP
+  states
+  {
+  Spawn:
+    CHUB AB 10 A_Look
+    loop
+  See:
+    CHUB AABBCCDD 4 A_Chase
+    loop
+  Missile:
+    CHUB E 10 A_FaceTarget
+    CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+	CHUB F 8 A_CyberAttack
+    CHUB E 8
+    goto See
+  Pain:
+    CHUB G 3
+    CHUB G 3 A_Pain
+    goto See
+  Death:
+    CHUB H 5
+    CHUB I 5 A_Scream
+    CHUB J 5 A_NoBlocking
+    CHUB K 5
+    CHUB L 5
+    CHUB M 5
+    CHUB N 5
+    stop
+  XDeath:
+    CHUB M 5
+    CHUB N 5 A_XScream
+    CHUB O 5 A_NoBlocking
+    CHUB PQRST 5
+    CHUB U 5
+    CHUB V 5
+    CHUB W 5
+    stop
+  Raise:
+    CHUB KJIH 5
+    goto See
+  }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+//================================================================
+//================================================================
+//
+//	            EASTER EGG MEGAMAN
+//
+//================================================================
+//          SPRITES TAKEN FROM 128SKINS.WAD BY DANIEL
+//
+//	          DECORATE BY [DBR]MEGAMANX3
+//
+//
+//================================================================
+
+actor EasterEgg 10132
+{
+  	//$Category "Unbroken NPCs"
+  spawnid 164
+  obituary "%o was killed by MegaMan."
+  health 15
+  radius 20
+  height 56
+  mass 100
+  speed 8
+  painchance 200
+  seesound "grunt/sight"
+  attacksound "grunt/attack"
+  painsound "grunt/pain"
+  deathsound "grunt/death"
+  activesound "grunt/active"
+  dropitem "Clip" 256
+  MONSTER
+  +FLOORCLIP
+  states
+  {
+  Spawn:
+    MMAN AB 10 A_Look
+    loop
+  See:
+    MMAN AABBCCDD 4 A_Chase
+    loop
+  Missile:
+    MMAN E 10 A_FaceTarget
+    MMAN F 8 A_PosAttack
+    MMAN E 8
+    goto See
+  Pain:
+    MMAN G 3
+    MMAN G 3 A_Pain
+    goto See
+  Death:
+    MMAN H 5
+    MMAN I 5 A_Scream
+    MMAN J 5 A_NoBlocking
+    MMAN K 5
+    MMAN L 5
+    MMAN M 5
+    MMAN N 5
+    stop
+  XDeath:
+    MMAN M 5
+    MMAN N 5 A_XScream
+    MMAN O 5 A_NoBlocking
+    MMAN PQRST 5
+    MMAN U 5
+    MMAN V 5
+    MMAN W 5
+    stop
+  Raise:
+    MMAN KJIH 5
+    goto See
+  }
+}

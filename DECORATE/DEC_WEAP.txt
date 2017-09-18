@@ -1,0 +1,339 @@
+// ============================= NEW WEAPONS ========================
+// Compiled by HEISENBERG
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+// ============= .:. THE RAILGUN .:. ==============
+// by [DBR]Megamanx3
+ACTOR RailGun : DoomWeapon 25045
+{
+	//$Category "Unbroken Weapons"
+   Inventory.PickupSound "misc/w_pkup"
+   Inventory.PickupMessage "You got the RailGun!"
+   Weapon.AmmoType "Cell"
+   Weapon.AmmoGive 100
+   Weapon.AmmoUse 50
+   States
+   {
+   Spawn:
+      RGUN A -1
+      Loop
+   Ready:
+      RLGG A 1 A_WeaponReady
+      Loop
+   Deselect:
+      RLGG A 1 A_Lower
+      Loop
+   Select:
+      RLGG A 1 A_Raise
+      Loop
+   Fire:
+      RLGG A 0 A_PlayWeaponSound("weapons/railgc")
+      RLGG A 13 A_GunFlash
+      RLGG A 7 A_RailAttack(200,0,5)
+      RLGG A 25
+      RLGG A 0 A_ReFire
+      Goto Ready
+   Flash:
+      RLGF AC 1 Bright
+      RLGF EG 2 Bright
+      RLGF H 3 Bright
+      RLGF I 5 Bright A_Light1
+      RLGF J 7 Bright A_Light2
+      RLGF K 1 Bright A_Light0
+      RLGF H 4 Bright
+      RLGF GFE 3 Bright
+      RLGF DCBA 2 Bright
+      Stop
+   }
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+// ============= .:. NEW FIRST & BERSERK .:. ==============
+// by NightFright & Per Kristian
+// TAKEN FROM PK_ANIM1 - THANK YOU AND CONGRATULATIONS FOR THIS GREAT STUFF
+
+ACTOR UnbrokenFist : Fist replaces Fist
+{
+	+WEAPON.NOALERT
+	States
+	{
+	Fire:
+		PKFS LBCD 1
+		PKFS E 2 A_Punch
+		PKFS FGHI 2
+		PKFS JKL 1
+		PUNG A 5 A_ReFire
+		Goto Ready
+	}
+}
+
+ACTOR UnbrokenBerserk : Berserk replaces Berserk
+{
+	States
+	{
+	Pickup:
+		TNT1 A 0 A_GiveInventory("PowerStrength")
+		TNT1 A 0 HealThing(100, 0)
+		TNT1 A 0 A_SelectWeapon("UnbrokenFist")
+		Stop
+	}
+}
+
+// ============= .:. NEW CHAINSAW .:. ==============
+// by NightFright & Per Kristian
+// TAKEN FROM PK_ANIM1 - THANK YOU AND CONGRATULATIONS FOR THIS GREAT STUFF
+
+ACTOR UnbrokenChainsaw : Chainsaw replaces Chainsaw
+{
+	States
+	{
+	Ready:
+    		SAWG CCDDEEFF 1 A_WeaponReady 
+	    	Loop
+	Fire:
+    		SAWG A 2 A_Saw
+		SAWG B 2
+		SAWG A 2 A_Saw
+		SAWG B 2
+    		SAWG B 0 A_ReFire
+    		Goto Ready
+	}
+}
+
+// ============= .:. NEW PISTOL .:. ==============
+// by NightFright & Per Kristian
+// TAKEN FROM PK_ANIM1 - THANK YOU AND CONGRATULATIONS FOR THIS GREAT STUFF
+
+ACTOR UnbrokenPistol : Pistol replaces Pistol
+{
+	decal bulletchip
+	States
+	{
+	Ready:
+		PKPI A 1 A_WeaponReady
+		Loop
+	Deselect:
+		PKPI A 1 A_Lower
+		Loop
+	Select:
+		PKPI A 1 A_Raise
+		Loop
+	Fire:
+		PKPI A 4
+		PKPI B 2 A_FirePistol
+		PKPI CEDB 2
+		PKPI A 5 A_ReFire
+		Goto Ready
+	Flash:
+		PKPF A 2 Bright A_Light2
+		PKPF B 1 Bright A_Light1
+		Goto LightDone
+	}
+}
+
+// ============= .:. NEW SHOTGUN .:. ==============
+// by NightFright & Per Kristian
+// TAKEN FROM PK_ANIM1 - THANK YOU AND CONGRATULATIONS FOR THIS GREAT STUFF
+
+ACTOR UnbrokenShotgun : Shotgun replaces Shotgun
+{
+	decal bulletchip
+	States
+	{
+	Fire:
+		PKSG A 3
+		PKSG A 5 A_FireShotgun
+		PKSG B 2
+		PKSG C 1
+		PKSG D 2
+		PKSG E 3
+		PKSG F 4
+		PKSG G 1
+		PKSG H 3
+		PKSG GFEDCB 2
+		PKSG A 1
+		PKSG A 7 A_ReFire
+		Goto Ready
+	Flash:
+		SHTF B 3 Bright A_Light2
+		SHTF A 2 Bright A_Light1
+		Goto LightDone
+	}
+}
+
+// ============= .:. NEW SUPER SHOTGUN .:. ==============
+// by NightFright & Per Kristian
+// TAKEN FROM PK_ANIM1 - THANK YOU AND CONGRATULATIONS FOR THIS GREAT STUFF
+
+ACTOR UnbrokenSuperShotgun : SuperShotgun replaces SuperShotgun
+{
+	decal bulletchip
+	States
+	{
+	Ready:
+		PKS2 A 1 A_WeaponReady
+		Loop
+	Deselect:
+		PKS2 A 1 A_Lower
+		Loop
+	Select:
+		PKS2 A 1 A_Raise
+		Loop
+	Fire:
+		PKS2 A 3
+		PKS2 A 6 A_FireShotgun2
+		PKS2 A 3 A_Checkreload
+		PKS2 B 2
+		PKS2 C 3
+		PKS2 D 4
+		PKS2 E 4
+		PKS2 F 2 A_OpenShotgun2
+		PKS2 GHIJ 2
+		PKS2 K 3
+		PKS2 L 2 A_LoadShotgun2
+		PKS2 M 3 
+		PKS2 NOPQ 2 
+		PKS2 R 3 A_CloseShotgun2
+		PKS2 S 3
+		PKS2 T 1 A_ReFire
+		Goto Ready
+	Flash:
+		SHT2 J 3 Bright A_Light2
+		SHT2 I 2 Bright A_Light1
+		Goto LightDone
+	}
+}
+
+// ============= .:. NEW CHAINGUN .:. ==============
+// by NightFright & Per Kristian
+// TAKEN FROM PK_ANIM1 - THANK YOU AND CONGRATULATIONS FOR THIS GREAT STUFF
+
+ACTOR UnbrokenChaingun : Chaingun replaces Chaingun
+{
+	decal bulletchip
+	States
+	{
+	Fire:
+		PKCG A 1 A_FireCGun
+		PKCG BCD 1
+		PKCG A 1 A_FireCGun
+		PKCG BCD 1
+		PKCG B 0 A_ReFire
+		PKCG A 1 A_Weaponready
+		PKCG BB 1 A_Weaponready
+		PKCG CCC 1 A_Weaponready
+		PKCG DDD 1 A_Weaponready
+		Goto Ready
+	Flash:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,4)
+		PKCF A 1 Bright A_Light1
+		PKCF B 1 Bright A_Light2
+		TNT1 A 2 A_Light1
+		Goto LightDone
+		PKCF C 1 Bright A_Light1
+		PKCF D 1 Bright A_Light2
+		TNT1 A 2 A_Light1
+		Goto LightDone
+	}
+}
+
+// ============= .:. NEW ROCKET LAUNCHER .:. ==============
+// by NightFright & Per Kristian
+// TAKEN FROM PK_ANIM1 - THANK YOU AND CONGRATULATIONS FOR THIS GREAT STUFF
+
+ACTOR UnbrokenRocketLauncher : RocketLauncher replaces RocketLauncher
+{
+	States
+	{
+	Fire:
+		PKRL A 2 
+		PKRL A 4 A_GunFlash
+		PKRL B 2
+		PKRL D 3 A_FireMissile
+		PKRL C 3
+		PKRL BE 2
+		PKRL FG 1
+		PKRL A 0 A_ReFire
+		Goto Ready
+	Flash:
+		PKRF A 3 Bright A_Light1
+		PKRF B 2 Bright
+		PKRF C 2 Bright A_Light2
+		PKRF DE 3 Bright
+		Goto LightDone
+	}
+}
+
+// ============= .:. NEW PLASMA RIFLE .:. ==============
+// by NightFright & Per Kristian
+// TAKEN FROM PK_ANIM1 - THANK YOU AND CONGRATULATIONS FOR THIS GREAT STUFF
+
+ACTOR UnbrokenPlasmaRifle : PlasmaRifle replaces PlasmaRifle
+{
+   	States
+   	{
+	Fire:
+		PLSF C 1 Bright A_FirePlasma
+		PLSF D 2 Bright
+		TNT1 A 0 A_ReFire
+		PLSF E 1 Bright
+		PLSF F 1 Bright
+		PLSF E 1 Bright
+		PKPL B 1
+		PKPL DEF 1
+		PKPL G 6
+		PKPL FEDC 2
+		PKPL BA 1
+		Goto Ready
+	Hold:
+		PLSF E 1 Bright A_FirePlasma
+		PLSF F 1 Bright
+		PLSF E 1 Bright
+		PLSF C 1 Bright A_FirePlasma
+		PLSF D 2 Bright
+		PLSF D 0 Bright A_ReFire
+		Goto Fire+3
+   	Flash:
+      		TNT1 A 1 A_Light1
+      		Goto LightDone
+   	}
+}
+
+// ============= .:. NEW BIG FUCKING GUN 9000 .:. ==============
+// by NightFright & Per Kristian
+// TAKEN FROM PK_ANIM1 - THANK YOU AND CONGRATULATIONS FOR THIS GREAT STUFF
+
+Actor UnbrokenBFG9000 : BFG9000 replaces BFG9000
+{	
+	States
+	{
+    	Fire: 
+    		BFGG A 20 A_BFGSound
+    		BFGG A 2 A_GunFlash
+		BFGN A 8
+    		BFGN A 10 A_FireBFG
+		BFGN A 1 A_ReFire
+		BFGG A 19 A_ReFire
+    		goto Ready
+	Hold:
+		BFGN A 1 A_BFGSound
+		BFGG A 19
+    		BFGG A 2 A_GunFlash
+		BFGN A 8
+    		BFGN A 10 A_FireBFG
+		BFGN A 1 A_ReFire
+		BFGG A 19 A_ReFire
+    		goto Ready
+    	Flash:
+	    	BFGW A 2 bright
+    		BFGX HGFE 1 bright A_Light2
+		BFGX DCBA 1 bright A_Light2
+		TNT1 A 0 A_Light0
+    		BFGY ABCDE 1 bright
+		BFGY FGHIJKL 1
+    		Goto LightDone
+	}
+}
+

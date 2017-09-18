@@ -1,0 +1,1698 @@
+// ============================= NEW MONSTERS ========================
+//Compiled by HEISENBERG
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+//================================================================
+//
+//				Tortured Soul
+//
+//================================================================
+// CREDITS:
+//
+// Decorate: Xaser (Some changes by Ravick)
+// GLDEFs: Dreadopp
+// Sounds: Id Software
+// Sprites: Id Software 
+// Sprite Edit: Assmaster
+//
+// THANKS TO REALM 667.com FOR THIS GREAT STUFF
+//================================================================
+
+
+ACTOR TorturedSoul 3122 
+{ 
+	//$Category "Unbroken Monsters"
+   Health 700 
+   Speed 8 
+   Radius 31 
+   Height 56 
+   PainChance 64 
+   Mass 400 
+   REACTIONTIME 8 
+   MONSTER 
+   +NOGRAVITY 
+   +FLOAT 
+   Explosiondamage 40
+   Explosionradius 80
+   SeeSound "torturedsoul/sight" 
+   PainSound "torturedsoul/pain" 
+   DeathSound "torturedsoul/death" 
+   ActiveSound "torturedsoul/active" 
+   Missiletype TorturedSoulBall 
+   Obituary "%o was tormented by the Tortured Soul." 
+   States 
+   { 
+   Spawn: 
+      TORT AB 10 A_Look 
+      Loop 
+   See: 
+      TORT AABBCC 3 A_Chase 
+      Loop 
+   Missile: 
+     TORT D 10 A_FaceTarget 
+     TORT D 0 A_JumpIfcloser (544, "MissileGas") //A_Jump(128,4) 
+     TORT E 4 A_FaceTarget 
+     TORT E 0 A_PlaySound("torturedsoul/attack") 
+     TORT F 4 A_CustomMissile(TorturedSoulBall, 40, 0, 0) 
+     Goto See
+  MissileGas:
+     TORT D 0 A_PlaySound("torturedsoul/poison") 
+     TORT D 4 A_CustomMissile(TorturedSoulPoison, 16, 0, 0) 
+     TORT D 0 A_PlaySound("torturedsoul/poison") 
+     TORT D 2 A_CustomMissile(TorturedSoulPoison, 16, 0, 0) 
+     Goto See 
+   Pain: 
+      TORT G 3 
+      TORT G 3 A_Pain 
+      Goto See 
+   Death: 
+      TORT H 8 
+      TORT I 8 A_Scream 
+      TORT JK 8 
+      TORT L 0 A_CustomMissile(TorturedSoulPoison, 32, 0, 0) 
+      TORT L 0 A_CustomMissile(TorturedSoulPoison, 32, 0, 45) 
+      TORT L 0 A_CustomMissile(TorturedSoulPoison, 32, 0, 90) 
+      TORT L 0 A_CustomMissile(TorturedSoulPoison, 32, 0, 135) 
+      TORT L 0 A_CustomMissile(TorturedSoulPoison, 32, 0, 180) 
+      TORT L 0 A_CustomMissile(TorturedSoulPoison, 32, 0, 225) 
+      TORT L 0 A_CustomMissile(TorturedSoulPoison, 32, 0, 270) 
+      TORT L 0 A_CustomMissile(TorturedSoulPoison, 32, 0, 315) 
+      TORT L 8  
+      TORT M 8 A_NoBlocking 
+      TORT N 8 
+      Stop 
+   } 
+}
+
+actor TorturedSoulBall 
+{ 
+    Radius 8 
+    Height 6 
+    Speed 20 
+    Damage 5 
+    PROJECTILE 
+    RENDERSTYLE ADD 
+    ALPHA 0.67 
+    DeathSound "imp/shotx" 
+    States 
+    { 
+    Spawn: 
+        TRBL AB 4 
+        Loop 
+    Death: 
+		TNT1 AAAA 0 A_CustomMissile("TorturedSoulPoison", 5, 0, random(0,360)) 
+		TRBL CDE 4 
+        Stop 
+    } 
+}
+
+actor TorturedSoulPoison 
+{ 
+    Radius 24 
+    Height 6 
+    Speed 5 
+    Damage 1 
+    +STRIFEDAMAGE 
+    +RIPPER 
+    PROJECTILE 
+    RENDERSTYLE Translucent 
+    ALPHA 0.67 
+    States 
+    { 
+    Spawn: 
+        TRPS ABCDEFGDEFGDEFGDEFGDEFGDCBA 4 
+        Stop 
+    Death: 
+        TRPS DCBA 4 
+        Stop 
+    } 
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+//================================================================
+//
+//				HELL'S GUARD
+//
+//================================================================
+// CREDITS:
+//
+// Decorate: Espi
+// GLDEFs: Ghastly Dragon, MagicWazard (brightmaps)
+// Sounds: Id Software, Raven Software
+// Sprites: Id Software, Raven Software
+// Sprite Edit: Espi
+//
+// THANKS TO REALM 667.com FOR THIS GREAT STUFF
+//================================================================
+// Obs.: Armoured version by Ravick (just like HellMilita)
+
+
+actor HellGuard 3114
+{
+	//$Category "Unbroken Monsters"
+    Health 300
+    Radius 24
+    Height 64
+    Speed 8
+    PainChance 50
+	//PainChance "HGSpark", 0
+    Mass 500
+	Species "HellGuardStuff"
+    MONSTER 
+    +FLOORCLIP
+    SeeSound "hellguard/sight"
+    PainSound "knight/pain"
+    DeathSound "hellguard/death"
+    ActiveSound "hellguard/idle"
+    Obituary "%o was fried by a hell's guard."
+    MeleeDamage 8
+	DamageFactor "HGTrail", 0
+    States
+    {
+    Spawn:
+        HLGD D 0 //A_Look
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD D 4 A_Look
+        Loop
+    See:
+        TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 10, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD A 3 A_Chase
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 10, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD A 3 A_Chase
+		
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 10, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD B 3 A_Chase
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 10, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD B 3 A_Chase
+		
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 10, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD C 3 A_Chase
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 10, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD C 3 A_Chase
+		
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 10, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD D 3 A_Chase
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 10, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD D 3 A_Chase
+        Loop
+		
+    Missile:
+        TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD E 3 A_FaceTarget
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD E 3 A_FaceTarget
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD E 3 A_FaceTarget
+
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+        HLGD F 4 Bright A_CustomMissile("HellGuardBall", 28, -8, (random(-4,0)), 1)
+        TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD E 4 A_FaceTarget
+		
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+        HLGD F 4 Bright A_CustomMissile("HellGuardBall", 28, -8, (random(4,0)), 1)
+        TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD E 4 A_FaceTarget
+		
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+        HLGD F 4 Bright A_CustomMissile("HellGuardBall", 28, -8, 0, 1)
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD E 4 A_FaceTarget
+        Goto See
+
+    Pain:
+        TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		HLGD G 2
+		TNT1 A 0 A_SpawnItemEx ("HellGuardArmor", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+        HLGD G 2 A_Pain
+        Goto See
+    Death:
+        HLGD H 6
+        HLGD I 6 A_Scream
+        HLGD J 6
+        HLGD K 6 A_Fall
+        HLGD LM 6
+        HLGD N -1
+        Stop
+    Raise:
+        HLGD ONMLKJI 8
+        Goto See
+		
+	// ACS only: (Ravick's Kludges...)
+    
+	FakeMissile:
+		HLGD D 20 
+        HLGD E 20
+		HLGD D 16
+		HLGD E 16
+        HLGD F 8 Bright A_PlaySound ("hellguard/shot")//A_CustomMissile("HellGuardBall", 28, -8, (random(-4,0)), 1)
+        HLGD E 8 A_FaceTarget
+		HLGD F 4 Bright A_PlaySound ("hellguard/shot")
+		HLGD E 12
+		Goto Spawn		
+    FakePain:
+        HLGD G 2
+		TNT1 A 0 A_Jump (130, 2)
+		HLGD G 2 A_Pain
+		HLGD D 8
+		HLGD E 4
+        Loop
+    Brabo:
+		HLGD E 10
+		loop
+    }
+}
+
+actor HellGuardBall
+{
+    Radius 13
+    Height 8
+    Speed 10
+    Damage 6
+	Species "HellGuardStuff"
+    PROJECTILE
+    RENDERSTYLE ADD
+    ALPHA 0.67
+    SeeSound "hellguard/shot"
+    DeathSound "hellguard/shothit"
+    Decal PlasmaScorchLower
+	+THRUSPECIES
+    States
+    {
+    Spawn:
+        HGFB ABCD 2 Bright
+        Loop
+    Death:
+        HGFB EFGH 4 Bright
+        Stop
+    }
+}
+
+Actor HellGuardArmor
+{
+health 999999
+radius 28
+height 20
+BloodType "HABigSpark" //"BulletPuff"
+Species "HellGuardStuff"
+MONSTER
+//-SOLID
++SHOOTABLE
++NOCLIP
+//+INVULNERABLE
+-COUNTKILL
+-CANPUSHWALLS
+-CANUSEWALLS
+-ACTIVATEMCROSS
+-ISMONSTER
++NOTARGET
++NOGRAVITY
++THRUSPECIES
++REFLECTIVE
+states
+  {
+  Spawn:
+  TNT1 A 4
+  stop
+  }
+}
+
+
+ACTOR HABigSpark : BulletPuff
+{
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+ALLOWPARTICLES
+	+RANDOMIZE
+	Species "HellGuardStuff"
+	RenderStyle Translucent
+	Alpha 0.5
+	VSpeed 0
+	Mass 5
+	States
+	{
+	Spawn:
+		PUFF A 4 Bright
+		TNT1 AAAAAAAAAA 0 A_SpawnItemEx ("HASmallSpark", random(-1,1), random(-1,1), random(-1,1), random(-4,4), random(-4,4), random(-4,4), random(-14,14), SXF_NOCHECKPOSITION)
+		PUFF B 4
+	Melee:
+		PUFF CD 4
+		Stop
+	}
+}
+
+Actor HASmallSpark
+{
+  Radius 1
+  Height 1
+  Speed 1
+  Damage 1
+  Scale 0.015
+  DamageType HGTrail
+  Species "HellGuardStuff"
+  RenderStyle Add
+  DamageType Fire
+  Alpha 0.67
+  Projectile
+  +ThruGhost
+  +PAINLESS
+  //+LOWGRAVITY
+  gravity 0.125
+  Seesound "weapons/firmfi"
+  DeathSound "weapons/firex5"
+  States
+  {
+  Spawn:
+    BALF ABABABAB 1 Bright A_SpawnItemEx("HATrail", 0, 0, 0, 0, 0, 0, 0, 128)
+    Stop
+  }
+}
+
+Actor HATrail
+{
+  Radius 1
+  Height 1
+  Scale 0.015
+  Species "HellGuardStuff"
+  +ThruGhost
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    BALF CDDEF 1 Bright
+    Stop
+  }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+//================================================================
+//
+//				ENHANCED CACODEMON
+//
+//================================================================
+// CREDITS:
+//
+//Decorate: Tormentor667
+//GLDefs: Sandypaper (Brightmaps)
+//Sounds: Id Software
+//Sprites: Id Software
+//Sprite Edit: Tormentor667
+//
+// THANKS TO REALM 667.com FOR THIS GREAT STUFF
+//================================================================
+
+
+ACTOR EnhancedCacodemon 3118
+{ 
+	//$Category "Unbroken Monsters"
+   Health 300
+   Speed 8 
+   Radius 31
+   Height 56
+   PainChance 128
+   Mass 400
+   Meleedamage 6 
+   REACTIONTIME 8 
+   Species "Cacodemon" //Ravick tirando le infight, riariaria
+   MONSTER
+   +NOGRAVITY
+   +FLOAT
+   SeeSound "caco/sight"
+   PainSound "caco/pain"
+   DeathSound "caco/death"
+   ActiveSound "caco/active"
+   HitObituary "%o was mowed down by an enhanced cacodemon." 
+   Obituary "%o was made into a snack by the enhanced cacodemon." 
+   States 
+   { 
+   Spawn: 
+      ENCD A 10 A_Look 
+      Loop 
+   See: 
+      ENCD A 3 A_Chase 
+      Loop 
+   Missile: 
+      ENCD BC 5 A_FaceTarget 
+      ENCD B 0 bright A_CustomMissile("CacodemonBall", 24, 0, 0, 1)
+      ENCD B 0 bright A_CustomMissile("CacodemonBall", 24, 0, -8, 1)
+      ENCD B 5 bright A_CustomMissile("CacodemonBall", 24, 0, 8, 1)
+      Goto See 
+   Pain: 
+      ENCD D 4 
+      ENCD D 4 A_Pain 
+      ENCD D 5 
+      Goto See 
+   Death: 
+      ENCD E 8 
+      ENCD F 8 A_Scream 
+      ENCD GH 8 
+      ENCD I 8 A_NoBlocking 
+      ENCD J -1 A_SetFloorClip
+      Stop 
+   Raise: 
+      ENCD J 8 A_UnsetFloorClip
+      ENCD IHGFE 8 
+      Goto See 
+   } 
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+//================================================================
+//
+//				SPIRIT IMP
+//
+//================================================================
+// CREDITS:
+//
+// Decorate: Ghastly Dragon and Tormentor667
+// GLDEFs: Ghastly Dragon, Keksdose
+// Sounds: Id Software (edits)
+// Sprites: Vader
+// Sprite Edit:  Tormentor667
+//
+// THANKS TO REALM 667.com FOR THIS GREAT STUFF
+//================================================================
+//Obs.: Warp effect takem
+//Obs.: #2 DECORATE changes by Ravick
+
+ACTOR SpiritImp 31179
+{
+  Health 50
+  Radius 20
+  Height 56
+  Mass 120
+  Speed 8
+  BloodType None
+  MONSTER
+  RENDERSTYLE add
+  //Alpha 0.7
+  +FloorClip
+  +NoBloodDecals
+  SEESOUND "SpiritImp/Sight"
+  DEATHSOUND "SpiritImp/Death"
+  ACTIVESOUND "SpiritImp/Active"
+  HITOBITUARY "%o was chilled by the touch of a spirit imp"
+  OBITUARY "%o was chilled by a spirit imp"  
+  states
+  {
+  Spawn:
+    SPIP AB 10 A_Look
+    Loop
+  See:
+    SPIP A 0 A_CustomMissile("OrbitSpirit", 28, 0, 90)
+    SPIP A 0 A_CustomMissile("OrbitSpirit2", 28, 0, -90)
+    SPIP AABBCCDD 3 A_Chase
+    Goto See+2
+  Melee:
+  Missile:
+    SPIP EFG 4 A_FaceTarget 
+    SPIP HIJK 5 A_FaceTarget
+    SPIP L 6 /*A_PainAttack ("Espirito")*/ A_CustomComboAttack ("SpiritImpBall", 28, 5, "Imp/Melee")
+    SPIP M 10
+    Goto See +2  
+  Pain:
+    SPIP N 3
+    SPIP N 3 A_Pain
+    Goto See +2
+  Death:
+    SPIP O 7 A_Scream
+    SPIP PQR 7 
+    SPIP S 6 A_SpawnItemEx("SpiritImpGhost1", 0, 0, 32, 0, 0, 0, 0, 128) 
+    SPIP T 5 A_Fall 
+    SPIP U 5 A_SpawnItem("SpiritImpGhost")
+    SPIP V 5 A_NoBlocking
+    SPIP W 3 A_FadeOut(0.015)
+    Goto Death+8
+  //Inventei essa gambiarra pra fazer os monstros do Mindfuck cairem nos poços de ácido, riariaria
+  SaidoBuraco:
+	//TNT1 A 0 A_ChangeFlag ("NODROPOFF", 0)
+	//TNT1 A 0 A_ChangeFlag ("DROPOFF", 1)
+	//TNT1 A 0 A_PrintBold ("passei por aqui!")
+	TNT1 A 0 A_ChangeFlag ("NOCLIP", 1) //Não quer funcionar? Vai noclip mesmo!
+    Goto See
+    }
+ }
+
+/*ACTOR Espirito2 : Espirito
+{
+  scale 0.4
+  Health 1
+  Radius 8
+  Height 8
+  Mass 1
+  Speed 4
+  Damage 1
+  PainChance 200
+  +STRIFEDAMAGE
+  states
+  {
+    See:
+	TNT1 A  0 A_SpawnItemEx("SpiritImpBallTrail", 0, 0, 0, 0, 0, 0, 0, 180)
+    SPIR AB 2 Bright A_Chase
+    Loop
+  Missile:
+    SPIR A 4 Bright A_FaceTarget
+    SPIR B 2 Bright A_SkullAttack (4)
+    SPIR AB 2 Bright
+    Loop
+  }
+}*/
+
+
+actor SpiritImpBall
+{
+    Radius 8
+    Height 6
+    Scale 0.4
+    Speed 9
+    Damage 2
+    +SEEKERMISSILE
+    PROJECTILE
+    Renderstyle ADD
+    SeeSound "harvester/scream"
+    DeathSound "imp/shotx"
+    Decal DoomImpScorch
+    States
+    {
+    Spawn:
+    	SPIR A  0 A_SpawnItemEx("SpiritImpBallTrail", 0, 0, 0, 0, 0, 0, 0, 180)
+        SPIR AB 2 A_SeekerMissile (10,20)
+        Loop
+    Death:
+        SPIR CDEFGHIJKL 4 
+        Stop
+    }
+}
+
+
+actor SpiritImpBallTrail
+{
+    Radius 1
+    Height 1
+    Speed 0
+    PROJECTILE
+    RENDERSTYLE ADD
+    ALPHA 0.5
+    +NOCLIP
+    States
+    {
+    Spawn:
+    Death:
+    	SITR H 6 
+        SITR ABCDEFG 4 
+        Stop
+    }
+}
+
+
+
+actor OrbitSpirit : SpiritImpBall
+{
+     SeeSound ""
+     +NOCLIP
+     Scale 0.4
+     Alpha 0.1
+     Speed 3
+     MissileHeight 0
+     States
+     {
+     Spawn:
+         SPIR AABB 1
+         SPIR A 3 A_CustomMissile("OrbitSpirit", 0, 0, 75)
+         Stop
+     Death:
+    	 SPIR A 2 A_FadeOut(0.015)
+         loop
+     }
+}
+
+actor OrbitSpirit2 : OrbitSpirit
+{
+     Speed 10
+     MissileHeight 0
+     States
+     {
+     Spawn:
+         SIBA AABB 1
+         SIBA A 0 A_CustomMissile("OrbitSpirit", 0, 0, -75)
+         stop
+     Death:
+    	 SIBA A 2 A_FadeOut(0.015)
+         loop
+     }
+}
+
+
+actor SpiritImpGhost1
+{
+    Radius 1
+    Height 1
+    Speed 0
+    PROJECTILE
+    RENDERSTYLE ADD
+    ALPHA 0.7
+    +NOCLIP
+    SeeSound "harvester/ghost"
+    States
+    {
+    Spawn:
+    Death:
+        SIGH A 0
+        SIGH A 0 A_PlaySound("harvester/ghost")
+        SIGH ABCDEFG 4 
+        Stop
+    }
+}
+
+Actor SpiritImpGhost
+{
+  Radius 20
+  Height 56
+  Mass 120
+  Speed 8
+  renderstyle add
+  alpha 0.2
+  +NOTELEPORT
+  +FLOORCLIP
+  -SOLID
+  -SHOOTABLE
+  +NONSHOOTABLE
+  +LOOKALLAROUND
+  States
+  {
+  Spawn:
+    SPIP AABB 6 A_Look
+    SPIP A 0 A_FadeOut(0.005)
+    Loop
+  See:
+    SPIP AABBCCDD 3 A_VileChase
+    SPIP A 0 A_FadeOut(0.005)
+    Loop
+  Death:
+    TNT1 A 1
+    Stop
+  Heal:
+    TNT1 G 1 A_FadeOut
+	loop
+    //Goto Death
+  }
+}
+
+Actor SpiritRavick : SpiritImpGhost // :B
+{
+  Mass 1
+  Speed 12
+  renderstyle add
+  alpha 0.3
+  SeeSound "harvester/ghost"
+  XScale 0.7
+  YScale 1.1
+  +NOCLIP
+  States
+  {
+  See:
+    SPIP AABBCCDD 3 A_Chase
+    TNT1 A 0 A_FadeOut(0.005)
+    Loop
+  Missile:
+    TNT1 A 0 A_FaceTarget
+	TNT1 A 0 A_FadeOut(0.005)
+    SPIP AA 3 A_Recoil(-1)
+	TNT1 A 0 A_FaceTarget
+	TNT1 A 0 A_FadeOut(0.005)
+    SPIP BB 3 A_Recoil(-1)
+	TNT1 A 0 A_FaceTarget
+	TNT1 A 0 A_FadeOut(0.005)
+    SPIP CC 3 A_Recoil(-1)
+	TNT1 A 0 A_FaceTarget
+	TNT1 A 0 A_FadeOut(0.005)
+    SPIP DD 3 A_Recoil(-1)
+  Goto See
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//================================================================
+//
+//				BLOT
+//
+//================================================================
+// CREDITS:
+//
+//Decorate: Captain Toenail
+//Sounds: Raven
+//Sprites: Raven, Id Software
+//Sprite Edit: Captain Toenail
+//
+// THANKS TO REALM 667.com FOR THIS GREAT STUFF
+//================================================================
+
+
+
+Actor BlotSmoke
+{
+  Radius 2
+  Height 2
+  +NOINTERACTION
+  RenderStyle Translucent
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_Jump (256, "Blot1", "Blot2", "Blot3", "Blot4")
+  Blot1:
+    BLOT A 2 
+    BLOT B 2 A_SetTranslucent (0.4, 0)
+    BLOT C 2 A_SetTranslucent (0.3, 0)
+    BLOT D 2 A_SetTranslucent (0.2, 0)
+    BLOT E 2 A_SetTranslucent (0.1, 0)
+    stop
+  Blot2:
+    BLOT F 2 
+    BLOT G 2 A_SetTranslucent (0.4, 0)
+    BLOT H 2 A_SetTranslucent (0.3, 0)
+    BLOT I 2 A_SetTranslucent (0.2, 0)
+    BLOT J 2 A_SetTranslucent (0.1, 0)
+    stop
+  Blot3:
+    BLOT K 2 
+    BLOT L 2 A_SetTranslucent (0.4, 0)
+    BLOT M 2 A_SetTranslucent (0.3, 0)
+    BLOT N 2 A_SetTranslucent (0.2, 0)
+    BLOT O 2 A_SetTranslucent (0.1, 0)
+    stop
+  Blot4:
+    BLOT P 2 
+    BLOT Q 2 A_SetTranslucent (0.4, 0)
+    BLOT R 2 A_SetTranslucent (0.3, 0)
+    BLOT S 2 A_SetTranslucent (0.2, 0)
+    BLOT T 2 A_SetTranslucent (0.1, 0)
+    stop
+  }
+}
+
+actor Blot 20501
+{
+	//$Category "Unbroken Monsters"
+  obituary "%o was engulfed by a blot."
+  health 20
+  radius 24
+  height 24
+  mass 50
+  speed 0
+  seesound "Blot/Sight"
+  deathsound "Blot/Death"
+  damagefactor "blot", 0
+  BloodType None
+  MONSTER
+  +STANDSTILL
+  +MISSILEMORE
+  +MISSILEEVENMORE
+  +DONTHURTSPECIES
+  +NODAMAGETHRUST
+  +BLOODLESSIMPACT
+  +LOWGRAVITY
+  //+GHOST   < In Heretic or Hexen, this would fit rather well.
+  states
+  {
+  Spawn:
+    TNT1 A 10 A_Look
+    loop
+  See:
+    EYES A 1 bright A_Chase
+    EYES AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-1, 1), random (-1, 1), 0, 160)
+    loop
+  Missile:
+    EYES A 1 bright A_FaceTarget
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-1, 1), random (-1, 1), 0, 160)
+    EYES A 1 bright ThrustThingZ (0, 12, 0, 0)
+    TNT1 A 0 ThrustThing(angle*256/360, 8, 0, 0)
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-1, 1), random (-1, 1), 0, 160)
+  MidLeap:
+    EYES A 1 bright A_SpawnItem ("BlotDamage")
+    TNT1 A 0 A_CheckFloor ("Land")
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-1, 1), random (-1, 1), 0, 160)
+    loop
+  Land:
+    EYES A 1 bright A_Stop
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-1, 1), random (-1, 1), 0, 160)
+    goto Missile
+  Death:
+    TNT1 A 1 A_Stop
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-2, 2), random (-2, 2), 0, 160)
+    TNT1 A 1 A_ScreamAndUnblock
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-3, 3), random (-3, 3), 0, 160)
+    TNT1 A 1 A_Stop
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-4, 4), random (-4, 4), 0, 160)
+    TNT1 A 1 A_Stop
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-5, 5), random (-5, 5), 0, 160)
+    TNT1 A 1 A_Stop
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-6, 6), random (-6, 6), 0, 160)
+    TNT1 A 1 A_Stop
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-7, 7), random (-7, 7), 0, 160)
+    TNT1 A 1 A_Stop
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-8, 8), random (-8, 8), 0, 160)
+    TNT1 A 1 A_Stop
+    TNT1 AAAAA 0 A_SpawnItemEx ("BlotSmoke", -2, random (0, -8), random (-4, 4), 0, random (-9, 9), random (-9, 9), 0, 160)
+    stop
+  }
+}
+
+actor BlotDamage
+{
+  Radius 2
+  Height 2
+  Speed 0
+  damagetype "blot"
+  Projectile
+  +NODAMAGETHRUST
+  +BLOODLESSIMPACT
+  States
+  {
+  Spawn:
+    TNT1 A 1
+    TNT1 A 1 A_Explode (5, 40, 0)
+    stop
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+//================================================================
+//
+//				LORD OF HERESY
+//
+//================================================================
+// CREDITS:
+//
+// Decorate: Bouncy, Tormentor667
+// GLDefs: Sandypaper (Brightmaps)
+// Sounds: Zippy
+// Sprites: Id Software
+// Sprite Edit: Vader, Tormentor667 (recolor)
+//
+// THANKS TO REALM 667.com FOR THIS GREAT STUFF
+//================================================================
+
+
+ACTOR LordofHeresy 3121
+{ 
+
+	//$Category "Unbroken Monsters"
+    Health 1250 
+    Radius 20 
+    Height 56 
+    Speed 13 
+    PainChance 50
+    BloodColor "7D 9D 59"
+    Mass 1000
+    MONSTER 
+	+FLOORCLIP
+    Obituary "%o was annihilated by the heresy lord." 
+    SeeSound "LordOfHeresy/sight" 
+    PainSound "demon/pain" 
+    DeathSound "LordOfHeresy/death" 
+    ActiveSound "LordOfHeresy/act"  
+    States 
+    { 
+    Spawn: 
+        LOHS AB 10 A_Look 
+        Loop 
+    See: 
+        LOHS AABBCCDD 4 A_Chase 
+        Loop 
+    Missile: 
+        LOHS E 0 A_Jump(85,5) 
+        LOHS E 0 A_Jump(128,9)
+        LOHS E 8 A_FaceTarget 
+        LOHS F 8 A_FaceTarget 
+        LOHS G 8 A_BruisAttack 
+        Goto See 
+        LOHS E 8 A_FaceTarget 
+        LOHS F 8 A_FaceTarget 
+        LOHS G 0 A_Custommissile ("BaronBall", 32, 0, 8) 
+        LOHS G 0 A_Custommissile ("BaronBall", 32, 0, 0) 
+        LOHS G 8 A_Custommissile ("BaronBall", 32, 0, -8) 
+        Goto See 
+        LOHS E 8 A_FaceTarget 
+        LOHS F 8 A_FaceTarget 
+        LOHS G 0 A_Custommissile ("BaronBall", 32, 0, -20) 
+        LOHS G 8 A_Custommissile ("BaronBall", 32, 0, 0) 
+        LOHS E 8 A_FaceTarget 
+        LOHS F 8 A_FaceTarget 
+        LOHS G 0 A_Custommissile ("BaronBall", 32, 0, 20) 
+        LOHS G 8 A_Custommissile ("BaronBall", 32, 0, 0) 
+        LOHS E 8 A_FaceTarget 
+        LOHS F 8 A_FaceTarget 
+        LOHS G 0 A_Custommissile ("BaronBall", 32, 0, -12) 
+        LOHS G 8 A_Custommissile ("BaronBall", 32, 0, 12) 
+        Goto See 
+    Pain: 
+        LOHS H 5 
+        LOHS H 5 A_Pain 
+        Goto See 
+    Death: 
+        LOHS I 8 
+        LOHS J 8 A_Scream 
+        LOHS K 8 A_Fall 
+        LOHS LMN 8 
+        LOHS O -1 
+        Stop 
+    Raise: 
+        LOHS ONMLKJI 5 
+        Goto See 
+    } 
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//================================================================
+//
+//				ILLUS
+//
+//================================================================
+// CREDITS:
+//
+// Decorate: Ghastly Dragon
+// Sounds: Warcraft 3
+// Sprites: Id Software
+// Sprite Edit: Vader, Ghastly Dragon
+//
+// THANKS TO REALM 667.com FOR THIS GREAT STUFF
+//================================================================
+
+
+Actor Illus 15001
+{
+	//$Category "Unbroken Monsters"
+  Health 120
+  Radius 20
+  Height 56
+  Mass 250
+  Speed 10
+  BloodColor "00 00 01"
+  Monster
+  RenderStyle Translucent
+  Alpha 0.8
+  MaxTargetRange 512
+  MeleeDamage 8
+  +FloorClip
+  SeeSound "Illus/Sight"
+  DeathSound "Illus/Death"
+  ActiveSound "Illus/Active"
+  MeleeSound "Illus/Melee"
+  Obituary "%o was clawed inside by an illus"
+  States
+  {
+  Spawn:
+    ILLS AAAAAAAAAABBBBBBBBBB 1 Bright A_Look
+    Loop
+  See:
+    ILLS A 3 Bright A_Chase
+    ILLS A 0 Bright A_SpawnItemEx("IllusImageA", 0, 0, 0, 0, 0, 0, 0, 128)
+    ILLS A 3 Bright A_Chase
+    ILLS A 0 Bright A_SpawnItemEx("IllusImageA", 0, 0, 0, 0, 0, 0, 0, 128)
+    ILLS B 3 Bright A_Chase
+    ILLS B 0 Bright A_SpawnItemEx("IllusImageB", 0, 0, 0, 0, 0, 0, 0, 128)
+    ILLS B 3 Bright A_Chase
+    ILLS B 0 Bright A_SpawnItemEx("IllusImageB", 0, 0, 0, 0, 0, 0, 0, 128)
+    ILLS C 3 Bright A_Chase
+    ILLS C 0 Bright A_SpawnItemEx("IllusImageC", 0, 0, 0, 0, 0, 0, 0, 128)
+    ILLS C 3 Bright A_Chase
+    ILLS C 0 Bright A_SpawnItemEx("IllusImageC", 0, 0, 0, 0, 0, 0, 0, 128)
+    ILLS D 3 Bright A_Chase
+    ILLS D 0 Bright A_SpawnItemEx("IllusImageD", 0, 0, 0, 0, 0, 0, 0, 128)
+    ILLS D 3 Bright A_Chase
+    ILLS D 0 Bright A_SpawnItemEx("IllusImageD", 0, 0, 0, 0, 0, 0, 0, 128)
+    Loop
+  Melee:
+    ILLS EFG 5 Bright A_FaceTarget
+    ILLS H 6 Bright A_MeleeAttack
+    Goto See
+  Missile:
+    ILLS EFG 5 Bright A_FaceTarget
+    ILLS H 6 Bright A_PainAttack("IllusGhost")
+    Goto See
+  Death:
+    ILLS I 0 Bright A_Scream
+    ILLS I 0 Bright A_NoBlocking
+    ILLS I 3 Bright A_FadeOut(0.02)
+    Goto Death+2
+  }
+}
+
+Actor IllusGhost
+{
+  Radius 20
+  Height 56
+  Mass 250
+  Speed 30
+  Obituary "%o was clawed inside by an illus"
+  RenderStyle Translucent
+  Alpha 0.4
+  MeleeDamage 8
+  MeleeSound "Illus/Melee"
+  +NoTeleport
+  +FloorClip
+  -Solid
+  -Shootable
+  +NonShootable
+  +LookAllAround
+  +Dropoff
+  +NoClip
+  States
+  {
+  Spawn:
+    TNT1 A 0
+  See:
+    TNT1 A 0 A_JumpIfInventory("IllusCounter", 20, "Death")
+    TNT1 AAAAAAAAAA 0 A_Chase
+    TNT1 A 1 A_GiveInventory("IllusCounter", 1)
+    Loop
+  Melee:
+    ILLS EFG 2 Bright A_FaceTarget
+    ILLS H 4 Bright A_MeleeAttack
+  Death:
+    TNT1 A 1
+    Stop
+  }
+}
+
+Actor IllusCounter : Inventory { Inventory.MaxAmount 20 }
+
+Actor IllusImageA
+{
+  Radius 4
+  Height 8
+  Speed 0
+  Damage 0
+  Mass 75
+  RenderStyle "Translucent"
+  Alpha 0.3
+  Projectile
+  States
+  {
+  Spawn:
+    ILLS A 10 Bright
+    Stop
+  }
+}
+
+Actor IllusImageB
+{
+  Radius 4
+  Height 8
+  Speed 0
+  Damage 0
+  Mass 75
+  RenderStyle "Translucent"
+  Alpha 0.3
+  Projectile
+  States
+  {
+  Spawn:
+    ILLS B 10 Bright
+    Stop
+  }
+}
+
+Actor IllusImageC
+{
+  Radius 4
+  Height 8
+  Speed 0
+  Damage 0
+  Mass 75
+  RenderStyle "Translucent"
+  Alpha 0.3
+  Projectile
+  States
+  {
+  Spawn:
+    ILLS C 10 Bright
+    Stop
+  }
+}
+
+Actor IllusImageD
+{
+  Radius 4
+  Height 8
+  Speed 0
+  Damage 0
+  Mass 75
+  RenderStyle "Translucent"
+  Alpha 0.3
+  Projectile
+  States
+  {
+  Spawn:
+    ILLS D 10 Bright
+    Stop
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+//================================================================
+//
+//				FALLEN
+//
+//================================================================
+// CREDITS:
+//
+// Decorate: Eriance
+/// GLDefs: Ghastly Dragon, Herculine (Brightmaps)
+// Sounds: Raven Software, Eriance
+// Sprites: Eriance
+//
+// THANKS TO REALM 667.com FOR THIS GREAT STUFF
+//================================================================
+
+
+Actor Fallen 30113
+{
+	//$Category "Unbroken Monsters"
+  Health 200
+  Radius 24
+  Height 48
+  Mass 200
+  Speed 12
+  PainChance 128
+  Monster
+  +NoGravity
+  +Float
+  Obituary "%o got burned by a Fallen."
+  SeeSound "monster/falsit"
+  PainSound "monster/falpai"
+  DeathSound "monster/faldth"
+  ActiveSound "monster/falact"
+  States
+  {
+  Spawn:
+    FALN ABCDB 8 Bright A_Look
+    Loop
+  See:
+    FALN A 0 Bright A_Jump(96,12)
+    FALN A 1 Bright A_Playsound("monster/falwng")
+    FALN AABBCCDDBB 2 Bright A_Chase
+    Loop
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 0 Bright A_Jump(64, 1)
+    Loop
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    Loop
+  Missile:
+    FALN C 0 Bright A_Jump(128, 13)
+    FALN CE 2 Bright A_FaceTarget 
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN E 2 Bright A_FaceTarget 
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN E 2 Bright A_FaceTarget 
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN E 2 Bright A_FaceTarget 
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN E 2 Bright A_FaceTarget 
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN E 5 Bright
+    Goto See
+    FALN C 0 Bright A_FastChase
+    FALN C 2 Bright A_FaceTarget
+    FALN E 0 Bright A_FastChase 
+    FALN E 2 Bright A_FaceTarget
+    FALN F 0 Bright A_FastChase
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN F 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN C 0 Bright A_FastChase
+    FALN C 2 Bright A_FaceTarget
+    FALN E 0 Bright A_FastChase 
+    FALN E 2 Bright A_FaceTarget
+    FALN F 0 Bright A_FastChase
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN F 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN C 0 Bright A_FastChase
+    FALN C 5 Bright A_FaceTarget
+    FALN E 0 Bright A_FastChase 
+    FALN E 2 Bright A_FaceTarget
+    FALN F 0 Bright A_FastChase
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN F 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN C 0 Bright A_FastChase
+    FALN C 2 Bright A_FaceTarget
+    FALN E 0 Bright A_FastChase 
+    FALN E 2 Bright A_FaceTarget
+    FALN F 0 Bright A_FastChase
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN F 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN C 0 Bright A_FastChase
+    FALN C 2 Bright A_FaceTarget
+    FALN E 0 Bright A_FastChase 
+    FALN E 3 Bright A_FaceTarget
+    FALN F 0 Bright A_FastChase
+    FALN F 2 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN F 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN E 5 Bright
+    Goto See 
+  Pain: 
+    FALN E 3 Bright
+    FALN E 3 Bright A_Pain 
+    FALN E 3 Bright
+    Goto See 
+  Death: 
+    FALN G 5 Bright
+    FALN H 5 Bright A_Scream 
+    FALN IJK 5 Bright
+    FALN L 5 Bright A_NoBlocking 
+    FALN M -1 A_SetFloorClip 
+    Stop 
+  Raise: 
+    FALN M 5 A_UnSetFloorClip 
+    FALN LKJIHG 5 Bright
+    Goto See 
+  }
+}
+
+Actor FallenFX
+{  
+  Radius 2
+  Height 2
+  Speed 0
+  Scale 1.0
+  Projectile
+  RenderStyle Add
+  Alpha 0.67
+  States
+  {
+  Spawn:
+    TNT1 A 3 Bright
+    FBFX ABCDE 3 Bright
+    Stop 
+  }
+}
+
+Actor FallenShot
+{
+  Radius 8
+  Height 8
+  Speed 16
+  Damage 2
+  RenderStyle Add
+  DamageType Fire
+  Alpha 0.67
+  Projectile
+  +ThruGhost
+  Seesound "weapons/firmfi"
+  DeathSound "weapons/firex5"
+  States
+  {
+  Spawn:
+    BALF AB 2 Bright A_SpawnItemEx("FallenFX", 0, 0, 0, 0, 0, 0, 0, 128)
+    Loop
+  Death:
+    BALF CDEF 4 Bright
+    Stop
+  }
+}
+
+Actor FallenSP
+{  
+  Radius 2
+  Height 2
+  Speed 0
+  ReactionTime 60
+  Projectile
+  RenderStyle Normal
+  -NoGravity
+  States
+  {
+  Spawn:
+    FBSP AB 3 Bright A_Countdown
+    Loop
+  Death:
+    FBSP CDE 3 Bright
+    Stop 
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+//================================================================
+//
+//				MAELSTROM
+//
+//================================================================
+//
+//         CREATED BY THEDARKARCHON
+//  TAKEN FROM ZDOOM MONSTER RESOURCE PACK [2006]
+//
+//
+//================================================================
+
+ACTOR MaelStrom 3130
+{
+	
+	//$Category "Unbroken Monsters"
+        Health 1500
+	Speed 10
+	Radius 16
+	Height 56
+	Damage 5
+	Painchance 255
+    Obituary "%o was terrified by a Maelstrom"
+	SeeSound "Skull/active"
+	PainSound "Skull/Pain"
+	DeathSound "Skull/Death"
+	MONSTER
+    +NORADIUSDMG
+	+NOGRAVITY
+	+FLOAT
+	+SPAWNFLOAT
+	+NOICEDEATH
+	States
+	{
+	Spawn:
+	   ASKU A 10 A_Look
+	   Loop
+	See:
+	   ASKU A 4 A_Chase
+	   Loop
+	Missile:
+	   ASKU A 0 A_Jump(128,4)
+	   ASKU B 4 BRIGHT A_SkullAttack
+	   ASKU CB 4 BRIGHT
+	   Goto Missile+3
+	   ASKU D 4 BRIGHT A_FaceTarget
+	   ASKU E 4 BRIGHT A_CustomMissile("MaelStromBall", 32, 0, 0)
+	   Goto See
+	Pain:
+         ASKU F 3
+	   ASKU F 3 A_Pain
+	   Goto See
+	Death:
+         ASKU G 0 A_NoGravity
+	   ASKU G 6
+	   ASKU H 6 A_Scream	
+	   ASKU I 6 A_NoGravity
+	   ASKU JKL 6
+	   ASKU M 0 A_Gravity
+	   ASKU M -1
+	   Stop
+	}
+}
+
+ACTOR	MaelStromBall
+{
+	Radius 13
+	Height 8
+	Speed 25
+	Damage 2
+	PROJECTILE
+	SeeSound "Imp/attack"
+	DeathSound "Imp/shotx"
+	States
+	{
+	Spawn:
+           PLSS AB 6 BRIGHT
+           Loop
+	Death:
+           PLSE A 0 BRIGHT A_CustomMissile("MaelStromBolt", 0, 0, 0)
+           PLSE A 0 BRIGHT A_CustomMissile("MaelStromBolt4Spawner", 0, 0, -180)
+           PLSE A 0 BRIGHT A_CustomMissile("MaelStromBolt4Spawner", 0, 0, -135)
+           PLSE A 0 BRIGHT A_CustomMissile("MaelStromBolt4Spawner", 0, 0, -90)
+           PLSE A 0 BRIGHT A_CustomMissile("MaelStromBolt4Spawner", 0, 0, -45)
+           PLSE A 0 BRIGHT A_CustomMissile("MaelStromBolt4Spawner", 0, 0, -0)
+           PLSE A 0 BRIGHT A_CustomMissile("MaelStromBolt4Spawner", 0, 0, 45)
+           PLSE A 0 BRIGHT A_CustomMissile("MaelStromBolt4Spawner", 0, 0, 90)
+           PLSE A 0 BRIGHT A_CustomMissile("MaelStromBolt4Spawner", 0, 0, 135)
+	   PLSE BCDE 4 BRIGHT
+	   Stop
+	}
+}	
+	   
+ACTOR	MaelStromBolt
+{
+	Radius 13
+	Height 8
+	Speed 1
+    Mass 5000
+	+NOGRAVITY
+    +NOCLIP
+	Scale 0.75
+    Obituary "%o was electrocuted by a Maelstrom"
+	States
+	{
+	Spawn:
+       TNT1 A 1
+       TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt2", 0, 0, -180)
+       TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt2", 0, 16, -175)
+       TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt2", 0, 32, -170)
+       TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt2", 0, -16, -185)
+       TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt2", 0, -32, -190)
+       Stop
+	}
+}		
+
+ACTOR	MaelStromBolt2
+{
+	Radius 13
+	Height 8
+	Speed 2
+    Mass 5000
+	+NOGRAVITY
+    +NOCLIP
+	Scale 0.75
+    Obituary "%o was electrocuted by a Maelstrom"
+	States
+	{
+	Spawn:
+           TNT1 A 1 BRIGHT
+           TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt3", 0, 0, 0)
+           TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt3", 0, 16, 0)
+           TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt3", 0, -16, 0)
+			/*
+           TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt3", 0, 0, 0)
+           TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt3", 0, 16, 0)
+           TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt3", 0, -16, 0)
+           TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt3", 0, 0, 0)
+           TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt3", 0, 16, 0)
+           TNT1 A 0 BRIGHT A_CustomMissile("MaelStromBolt3", 0, -16, 0)
+			*/
+           Stop
+	}
+}	
+
+ACTOR	MaelStromBolt3
+{
+	Radius 13
+	Height 8
+	Speed 0
+    Mass 5000
+    EXPLOSIONDAMAGE 2
+    EXPLOSIONRADIUS 64
+	+NOGRAVITY
+    +FLOORHUGGER
+    RENDERSTYLE ADD
+    ALPHA 0.5
+	Scale 0.75
+    Obituary "%o was electrocuted by a Maelstrom"
+	States
+	{
+	Spawn:
+           FIR2 A 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 B 2 BRIGHT 
+           FIR2 C 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 D 2 BRIGHT A_Explode
+           FIR2 E 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 F 2 BRIGHT 
+           FIR2 G 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 H 2 BRIGHT A_Explode
+           FIR2 I 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 J 2 BRIGHT 
+           FIR2 K 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 L 2 BRIGHT A_Explode
+           FIR2 M 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 N 2 BRIGHT 
+           FIR2 O 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 P 2 BRIGHT A_Explode
+           FIR2 A 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 B 2 BRIGHT 
+           FIR2 C 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 D 2 BRIGHT A_Explode
+           FIR2 E 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 F 2 BRIGHT 
+           FIR2 G 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 H 2 BRIGHT 
+           FIR2 I 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 J 2 BRIGHT 
+           FIR2 K 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 L 2 BRIGHT A_Explode
+           FIR2 M 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 N 2 BRIGHT 
+           FIR2 O 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 P 2 BRIGHT 
+           FIR2 O 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 N 2 BRIGHT 
+           FIR2 M 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 N 2 BRIGHT A_Explode
+           FIR2 O 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 P 2 BRIGHT 
+           FIR2 O 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 N 2 BRIGHT 
+           FIR2 M 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 N 2 BRIGHT 
+           FIR2 QR 6 BRIGHT
+           Stop
+	}
+}		
+
+ACTOR	MaelStromBolt4Spawner
+{
+	Radius 13
+	Height 8
+	Speed 20
+    Damage 0
+    Mass 5000
+	PROJECTILE
+    +RIPPER
+    +FLOORHUGGER
+    +SEEKERMISSILE
+	States
+	{
+	Spawn:
+           TNT1 A 1 A_CustomMissile("MaelStromBolt4", 0, 0, 0)
+		   TNT1 A 0 A_SeekerMissile(5,15)
+           Loop
+	Death: 
+           TNT1 A 0
+           Stop
+	}
+}	
+
+
+ACTOR	MaelStromBolt4
+{
+	Radius 13
+	Height 8
+	Speed 0
+    Mass 5000
+    Damage 1
+    EXPLOSIONDAMAGE 2
+    EXPLOSIONRADIUS 64
+	+NOGRAVITY
+	+FLOORCLIP
+    +STRIFEDAMAGE
+    +RIPPER
+    +FLOORHUGGER
+    RENDERSTYLE ADD
+    ALPHA 0.5
+	Scale 0.75
+	States
+	{
+	Spawn:
+           FIR2 A 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 B 2 BRIGHT A_Explode
+           FIR2 C 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 D 2 BRIGHT 
+           FIR2 E 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 F 2 BRIGHT A_Explode
+           FIR2 G 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 H 2 BRIGHT 
+           FIR2 I 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 J 2 BRIGHT A_Explode
+           FIR2 K 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 L 2 BRIGHT 
+           FIR2 M 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 N 2 BRIGHT A_Explode
+           FIR2 O 2 BRIGHT A_PlaySound("mealstrom/boltcrackle")
+           FIR2 P 2 BRIGHT 
+           FIR2 QR 6 BRIGHT
+           Stop
+	}
+}			
+
+///////////////////////////////////////////////////////////////////////////////
+
+//================================================================
+//
+//				BHAAL
+//
+//================================================================
+//
+//         CREATED BY [DBR]MEGAMANX3
+//         BASED ON SKULLTAG'S "BEPHELGOR" BY CARNEVIL
+//
+//
+//================================================================
+
+
+actor Bhaal 9304
+{
+  spawnid 3
+  	//$Category "Unbroken Monsters"
+  obituary "%o was bruised by a Bhaal."
+  hitobituary "%o was ripped open by a Bhaal."
+  health 4000
+  radius 24
+  height 64
+  mass 1000
+  speed 14
+  painchance 15
+  seesound "baron/sight"
+  painsound "baron/pain"
+  deathsound "baron/death"
+  activesound "baron/active"
+  MONSTER
+  +FLOORCLIP
+  states
+  {
+  Spawn:
+    BOS3 AB 10 A_Look
+    loop
+  See:
+    BOS3 AABBCCDD 3 A_Chase
+    loop
+  Melee:
+  Missile:
+    BOS3 EF 8 A_FaceTarget
+    BOS3 G 8 A_BruisAttack  // See BaronBall
+    goto See
+  Pain:
+    BOS3 H 2
+    BOS3 H 2 A_Pain
+    goto See
+  Death:
+    BOS3 I 8
+    BOS3 J 8 A_Scream
+    BOS3 K 8
+    BOS3 L 8 A_NoBlocking
+    BOS3 MN 8
+    BOS3 O -1 A_BossDeath
+    stop
+  Raise:
+    BOS3 ONMLKJI 8
+    goto See
+  }
+}
