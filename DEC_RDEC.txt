@@ -1,0 +1,829 @@
+// ============================= RAVICK'S JOKE iTEMS ========================
+// Made by RAVICK
+// Compiled by HEISENBERG
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+
+//================================================================
+//
+//	Drinks!
+// 
+//===========================
+// By RAVICK
+//================================================================
+
+ACTOR Dollinho : HealthBonus 2550
+{
+	Translation "0:255=%[0.0,0.0,0.0]:[1.76, 1.37, 0.0]"
+	Inventory.Amount 2
+	Scale 0.4
+	Height 12
+	Radius 12
+	Inventory.PickupMessage "Drank Dolly Guaraná!"
+}
+
+ACTOR MAxCola : Dollinho 2551
+{
+	Inventory.PickupMessage "Drank UAC Cola!"
+	Translation "0:255=%[0.0,0.0,0.0]:[1.0, 1.0, 0.5]"//"0:255=%[0.0,0.0,0.0]:[0.27, 0.27, 0.27]"
+}
+
+ACTOR Laranjinha : Dollinho 2552
+{
+	Inventory.PickupMessage "Drank Laranjinha!"
+	Translation "0:255=%[0.5,0.5,0.1]:[1.0, 1.0, 0.5]"
+}
+
+
+ACTOR Tubaina_da_Gambiarra : Clip 2560
+{
+  Inventory.PickupMessage ""
+  Inventory.Icon "TNT1A0"
+  States
+  {
+  Spawn:
+    TNT1 A -1
+    Stop
+  }
+}
+
+//================================================================
+//
+//	CacoWard!
+// 
+//===========================
+// By RAVICK (I made my own! =P)
+//================================================================
+
+ACTOR CacoWard 2553
+{
+	Radius 12
+	Height 12
+	Scale 0.2
+	Translation "0:255=%[0.36,0.33,0.07]:[1.0, 1.0, 0.32]" //(RBG/255)
+	+SOLID
+	States
+	{
+	Spawn:
+		HEAD C 600 //BRIGHT
+		HEAD EFEDCBAABC 2
+		Loop
+	}
+}
+
+
+ACTOR Marinito : CacoWard 2554
+{
+	Scale 0.17
+	Translation "112:127=%[0.07,0.07,0.07]:[0.24, 0.44, 0.32]" //(RBG/255)
+	+SOLID
+	States
+	{
+	Spawn:
+		PLAY E 1250 //BRIGHT
+		PLAY FEFEF 2
+		Loop
+	}
+}
+
+ACTOR RoupadeMarine : CacoWard 2555
+{
+	Scale 0.75
+	Translation "112:127=%[0.0,0.0,0.0]:[0.1, 0.25, 0.5]" //(RBG/255)
+	+SOLID
+	States
+	{
+	Spawn:
+		UNIF A -1
+		stop
+	}
+}
+
+ACTOR Capacete : RoupadeMarine 2556
+{
+	States
+	{
+	Spawn:
+		AHLM A -1
+		stop
+	}
+}
+
+ACTOR Botas : RoupadeMarine 2557
+{
+	States
+	{
+	Spawn:
+		BOOT A -1
+		stop
+	}
+}
+
+ACTOR RoupaLaranja : RoupadeMarine 2558
+{	Scale 1.0
+	States
+	{
+	Spawn:
+		UNIF B -1
+		stop
+	}
+}
+
+ACTOR Bhaalzinho : CacoWard 2559
+{
+	Scale 0.35
+	Translation "0:255=0:255"
+	States
+	{
+	Spawn:
+		BOS3 E -1
+		Stop
+	}
+}
+
+//================================================================
+//
+//	Shreckinho
+// 
+//===========================
+// I.L.M. 04/06/2017
+//================================================================
+// Shreck(inho) é o nome de um cachorro de rua que resgatamos
+// há alguns meses. Hoje, 4 de junho de 2017, cheguei em casa
+// e ele havia morrido, provavelmete por pneumonia. :'(
+
+ACTOR Shreckinho : Marinito 5555
+{
+	Scale 0.17
+	+SOLID
+	States
+	{
+	Spawn:
+		DOGS E 1250
+		PLAY FG 2
+		Loop
+	}
+}
+
+//================================================================
+//
+//	BOLA
+// 
+//===========================
+// By Ravick
+//================================================================
+
+ACTOR bola : Marinito 5556
+{
+	Scale 0.3
+	Translation ice
+	+SOLID
+	+NOGRAVITY
+	+FLOAT
+	+FORCEXYBILLBOARD
+	States
+	{
+	Spawn:
+		BAL1 A 4
+		Loop
+	}
+}
+//================================================================
+//================================================================
+//
+//				Caveiras
+//
+//================================================================
+//================================================================
+//	Decorate by Ravick
+//================================================================
+
+ACTOR FloatingSkull2 : FloatingSkull 5009//42
+{
+	+SOLID
+	+VISIBILITYPULSE
+	+FLOATBOB
+	States
+	{
+	Spawn:
+		FSKU ABCABCABC 6 BRIGHT
+		FSKU ABCABCABCABCABCABCABCABCABCABCABC 1 BRIGHT
+		Loop
+	}
+}
+
+
+//================================================================
+//================================================================
+//
+//				O controverso sinalizador...
+//
+//================================================================
+//================================================================
+//	Decorate by Ravick ('Tá, vamos fazer uma gambiarra!')
+//================================================================
+
+ACTOR SkullFlare
+{
+	Radius 5
+    Height 5
+	Mass 10
+    Speed 0
+	VSpeed 10
+    Damage 20
+	Projectile
+	+SOLID
+	+VISIBILITYPULSE
+	+NOGRAVITY
+	+SKYEXPLODE  
+	+FORCEXYBILLBOARD
+	+FULLVOLDEATH
+  	RenderStyle Add
+  	Alpha 1
+  	SeeSound "imp/shotx"	
+  	DeathSound "imp/shotx"//"MageLightningFire"
+	States
+	{
+	Spawn:
+		//Vspeed não funcionou...
+    	RSKU A 2 Bright ThrustThingZ (0, 10, 0, 0)
+		TNT1 AAA 0 A_SpawnItemEx ("SkullParticle", 0, random(-10,-10), random(-10,0), random(-1,1), random(-1,1), 0, random(-32,32), SXF_NOCHECKPOSITION)
+		RSKU A 2 Bright ThrustThingZ (0, 10, 0, 0)
+		TNT1 AAA 0 A_SpawnItemEx ("SkullParticle", 0, random(-10,-10), random(-10,0), random(-1,1), random(-1,1), 0, random(-32,32), SXF_NOCHECKPOSITION)
+    	Loop
+	Death:
+	 	TNT1 AAAAA 0 A_SpawnItemEx ("SkullParticle", 0, 0, 0, random(-10,10), random(-10,10), random(-10,0), random(-32,32), SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode
+    	RSKU A 2 Bright A_SetScale((scalex + 0.005), (scaley - 0.005))
+		TNT1 AAAAA 0 A_SpawnItemEx ("SkullParticle", 0, 0, 0, random(-10,10), random(-10,10), random(-10,0), random(-32,32), SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_FadeOut (0.05)
+    	RSKU B 2 Bright A_SetScale((scalex + 0.005), (scaley - 0.005))
+    	loop
+	}
+}
+
+Actor SkullParticle
+{
+ +THRUACTORS
+ +MISSILE
+ +NOGRAVITY
+ +FLOATBOB
+ +FORCEXYBILLBOARD
+ Radius 1
+ Height 1
+ BounceType Doom
+ RenderStyle Add
+ Alpha 1.0
+ YScale 0.4
+ XScale 0.4
+ States
+ {
+  Spawn:
+   YSKU ABABABABABABABAB 5 Bright A_Weave(1, 1, 1.0, 1.0)
+   //
+  Death: 
+   YSKU A 1 Bright A_FadeOut(0.2)
+   Loop
+ }
+}
+
+//================================================================
+//================================================================
+//
+//				CARINHA!
+//
+//================================================================
+//================================================================
+//	Decorate by Ravick ('Tá, vamos fazer uma gambiarra!')
+//================================================================
+
+
+ACTOR Carinha: LiveStick replaces LiveStick 266
+{
+  Radius 16
+  Height 64
+  Health 35
+  Mass 99999
+  PainSound "grunt/pain"
+  DeathSound "grunt/death"
+  DropItem "healthBonus"
+  ProjectilePassHeight 0
+  +SOLID
+  +SHOOTABLE
+  States
+  {
+  Spawn:
+    POL6 A 6
+    POL6 B 8
+    Loop
+  Pain:
+    POL6 ABAB 2 A_Pain
+    POL6 BABABA 2
+    Goto Spawn
+  Death:
+    POL6 B -1
+    stop
+  }
+}
+
+//================================================================
+//================================================================
+//
+//				Outras Tochas!
+//
+//================================================================
+//================================================================
+//	Decorate by Ravick
+//================================================================
+
+ACTOR ShortWhiteTorch : ShortGreenTorch 5699
+{
+  //$Category MindFuck's Actors
+  Translation "112:127=80:86"
+}
+
+ACTOR ShortYellowTorch : ShortGreenTorch 5700
+{
+  //$Category MindFuck's Actors
+  Translation "112:127=228:231"
+}
+
+ACTOR ShortPinkyTorch : ShortGreenTorch 5701
+{
+  //$Category MindFuck's Actors
+  Translation "112:127=251:254"
+}
+
+ACTOR WhiteGreenTorch : GreenTorch 450
+{
+  //$Category MindFuck's Actors
+  Translation "112:127=80:83"
+}
+
+//================================================================
+//================================================================
+//
+//				The Truck!
+//
+//================================================================
+//================================================================
+//	Decorate by Ravick
+//	Sprites from GoldenEye TC
+//================================================================
+
+actor Caminhao 14901
+{
+//$Category MindFuck's Actors
+  Height 75
+  Radius 65
+  +SOLID
+  States
+  {
+  Spawn:
+    TRUK A 10 
+    Loop
+  }
+}
+
+
+//================================================================
+//================================================================
+//
+//				Mounted Rifle
+//
+//================================================================
+//================================================================
+//	Decorate by Ravick
+//	Sprites from Cold as Hell SE
+//================================================================
+
+actor METRANCA 6664
+
+{
+//$Category MindFuck's Actors
+   radius 25
+  height 56
+  SCALE 0.4
+   -SHOOTABLE
+   -SOLID
+   +CANPASS
+   +NODROPOFF   
+   +TELESTOMP
+  states
+  {
+  Spawn:
+    MBAR A 10
+    loop   
+  }
+ }
+
+//================================================================
+//================================================================
+//
+//				The lamps!
+//
+//================================================================
+//================================================================
+//	These lamps were my very first try with dinamic lights,
+//  made for my first mod ever... (And I still use them!)
+//================================================================
+
+ACTOR Lampada : SwitchableDecoration 14000
+{
+//$Category MindFuck's Actors
+    Health 99999999
+    Radius 10
+    Height 10
+    Mass 10000000
+    -SOLID
+	-INVISIBLE
+	+SPAWNCEILING 
+	+NOGRAVITY
+	States
+    {
+    Spawn:
+		LAMP  A 3
+	Active:
+        LAMP  A  1 BRIGHT Light("LUZ")
+        Loop
+	Inactive:
+        LAMP  A  1
+        Loop
+     }
+}
+
+
+/*ACTOR Lampada 14000      
+{
+//$Category MindFuck's Actors
+    Health 99999999
+    Radius 10
+    Height 10
+    Mass 10000000
+    //Scale 3
+    -SOLID
+	-INVISIBLE
+	+SPAWNCEILING 
+	+NOGRAVITY
+	States
+    {
+    Spawn:
+        LAMP  A  -1 BRIGHT //Light("LUZ")
+        Stop
+     }
+}*/
+
+ACTOR LampadaApagada : Lampada 1070
+{
+//$Category MindFuck's Actors
+	States
+    {
+    Spawn:
+        LAMP  A  -1 
+        Stop
+     }
+}
+
+ACTOR Luz_branca_menor : Lampada 14830
+{
+//$Category MindFuck's Actors
+    //spawnid 253
+	Radius 10
+    Height 10
+    +SPAWNCEILING
+    -NOGRAVITY
+	+INVISIBLE
+	+FLOORCLIP
+	States
+    {
+    Spawn:
+        LAMP  A  -1 BRIGHT // Light("BRANCA_MENOR")
+        Stop
+     }
+}
+
+ACTOR Luz_branca_menor2 : Lampada 14839
+{
+//$Category MindFuck's Actors
+    spawnid 250
+		States
+    {
+    Spawn:
+        TNT1 A  -1 BRIGHT //Light("BRANCA_MENOR")
+        Stop
+     }
+}
+
+
+ACTOR Luz_branca_menor3 : Lampada 14838
+{
+//$Category MindFuck's Actors
+    //spawnid 250
+	Height 58
+	Radius 1
+		States
+    {
+    Spawn:
+        TNT1 A  -1 BRIGHT //Light("BRANCA_MENOR")
+        Stop
+     }
+}
+
+
+ACTOR Luz_branca_Ainda_menor : Lampada 14831
+{
+//$Category MindFuck's Actors
+    //spawnid 253
+	Radius 10
+    Height 10
+    +SPAWNCEILING
+    +NOGRAVITY
+	+INVISIBLE
+	-FLOORCLIP
+	States
+    {
+    Spawn:
+        LAMP  A  -1 BRIGHT //Light("BRANCA_AINDA_MENOR")
+        Stop
+     }
+}
+
+
+//================================================================
+//================================================================
+//
+//				CARCASS
+//
+//		 'No, Jhon! For cattle, you are the demons!'
+//================================================================
+//================================================================
+//	Sprite by Monolith.
+//  DECORATE by Ravick.
+//================================================================
+
+actor Carcaca 3332 
+{
+ //$Category MindFuck's Actors
+  radius 20
+  height 93
+  MONSTER
+   -SOLID	
+   -SHOOTABLE
+   +NOBLOCKMONST
+   +SPAWNCEILING 
+   -NOGRAVITy
+   +FLOAT
+  states
+  {
+  Spawn:
+    CARN A -1
+    loop
+  }
+}
+
+//================================================================
+//================================================================
+//
+//				Turkey
+//
+//		 		"Seu Peru"
+//================================================================
+//================================================================
+//	Sprite from MapleStory, rippedby Mageker.
+//  DECORATE by Ravick.
+//================================================================
+
+ACTOR Turkey : ZombieMan 6660
+{
+  Health 40
+  Speed 0
+  PainChance 255
+  SeeSound " "
+  PainSound "keen/pain"
+  DeathSound "keen/death"
+  ActiveSound " "
+  Obituary "Gluglu"
+  DropItem " "//"Aureola"
+  +BOSS
+  -COUNTKILL 
+  States
+  {
+  Spawn:
+    PERU A 10
+    //Loop
+  See:
+    PERU A 10
+    Loop
+  Missile:
+    Goto See
+  Pain:
+    PERU B 3
+    PERU B 3 A_Pain
+    Goto See
+  Death:
+    PERU C 6
+    PERU D 6 A_Scream
+	TNT1 A 0 A_SpawnItemEx ("Aureola", random(19,23), 0, 15, 0, 0, 0, 0, 0, 0, 0)
+	TNT1 A 0 ACS_Execute(28, 0)
+    PERU D 6 A_NoBlocking
+    PERU DDDD 2 A_FadeOut
+    TNT1 A 80
+	TNT1 A -1 Thing_Raise (0)
+	Stop
+  Raise:
+    PERU DDDD 2 A_FadeIN
+    PERU C 6
+    Goto See
+  }
+}
+
+actor GambiarraTosca : Zombieman 6661
+{
+  speed 0
+  -COUNTKILL
+  states
+  {
+  Spawn:
+    PLA1 E 5
+    Loop
+   See:
+    PLA1 E 5
+    Loop
+   Melee:
+    PLA1 EFE 6
+    goto See
+  }
+}
+
+
+ACTOR Aureola
+{
+	Radius 5
+    Height 5
+	Mass 10
+    Speed 0
+	Projectile
+	+SOLID
+	+VISIBILITYPULSE
+	+NOGRAVITY
+	+SKYEXPLODE  
+	+FORCEXYBILLBOARD
+	+FULLVOLDEATH
+  	RenderStyle Add
+  	Alpha 1
+  	SeeSound " "	
+  	DeathSound " "
+	States
+	{
+	Spawn:
+    	PERU EE 2 Bright ThrustThingZ (0, 4, 0, 0)
+		PERU EE 2 ThrustThingZ (0, 4, 0, 0)
+	Death:
+	    TNT1 A 0 A_FadeOut
+	 	PERU EE 2 ThrustThingZ (0, 4, 0, 0)
+		loop
+	}
+}
+
+
+//================================================================
+//
+//	Chess Pieces
+// 
+//===========================
+// By RAVICK
+//================================================================
+
+ACTOR Rei : Marinito 6670
+{
+	Scale 0.14
+	Translation "0:255=0:255" //because.
+	+NOINTERACTION//+SOLID
+	States
+	{
+	Spawn:
+		PLY2 E random(500, 1000)
+		PLY2 F 5
+		Loop
+	}
+}
+
+ACTOR Rainha : Rei 6671
+{
+	States
+	{
+	Spawn:
+		RIPL E random(500, 1000)
+		RIPL F 5
+		Loop
+	}
+}
+
+ACTOR Torre : Rei 6672
+{
+	States
+	{
+	Spawn:
+		PBAZ E random(500, 1000)
+		PBAZ F 5
+		Loop
+	}
+}
+
+ACTOR Peao : Rei 6673
+{	Scale 0.12
+	States
+	{
+	Spawn:
+		PLA1 E random(500, 1000)
+		PLA1 F 5
+		Loop
+	}
+}
+
+ACTOR Bispo : Rei 6674 {
+	States
+	{
+	Spawn:
+		PMED E random(500, 1000)
+		PMED F 5
+		Loop
+	}
+}
+
+ACTOR Cavalo : Rei 6675 {
+	States
+	{
+	Spawn:
+		DOGS E random(500, 1000)
+		DOGS F 5
+		Loop
+	}
+}
+
+//Demon pieces:
+
+ACTOR DRei : Rei 6676
+{
+	Scale 0.1
+	States
+	{
+	Spawn:
+		CYBR  E random(500, 1000)
+		CYBR  F 5
+		Loop
+	}
+}
+
+ACTOR DRainha : Rei 6677
+{ Scale 0.06
+	States
+	{
+	Spawn:
+		SPID H random(500, 1000)
+		SPID G 5
+		Loop
+	}
+}
+
+ACTOR DTorre : Rei 6678
+{Scale 0.12
+	States
+	{
+	Spawn:
+		BOSS E random(500, 1000)
+		BOSS FG 5
+		Loop
+	}
+}
+
+ACTOR DPeao : Rei 6679
+{	Scale 0.11
+	States
+	{
+	Spawn:
+		TROO E random(500, 1000)
+		TROO F 5
+		Loop
+	}
+}
+
+ACTOR DBispo : Rei 6680 { Scale 0.09
+	States
+	{
+	Spawn:
+		VILE G random(1000, 1500)
+		VILE GHIJKLMNOP 5
+		Loop
+	}
+}
+
+ACTOR DCavalo : Rei 6681 { Scale 0.12
+	States
+	{
+	Spawn:
+		SARG E random(500, 1000)
+		SARG F 5
+		Loop
+	}
+}

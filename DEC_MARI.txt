@@ -1,0 +1,1197 @@
+// ============================= MARINE ALLIES ========================
+//  Made by RAVICK
+//  Compiled by HEISENBERG
+// LAST UPDATE: 18.09.2017 01:00 PM
+
+
+//================================================================
+//================================================================
+//
+//		         SHARED ACTORS
+//              
+//================================================================
+//================================================================
+//  Decorate by Ravick
+//
+//  Actors used by various Marines
+//================================================================ 
+
+Actor MarineBullet : FastProjectile
+{
+  Radius 12
+  Height 12
+  Speed 100
+  Damage 3
+  Scale 0.15
+  DamageType "FogoAmigo"
+  RenderStyle Add
+  Alpha 0.67
+  Projectile
+  //gravity 0.125
+  Seesound "MARINEPISTOL"
+  DeathSound ""
+  +STRIFEDAMAGE
+  States
+  {
+  Spawn:
+    BALF AB 1 Bright A_SpawnItemEx("HATrail", 0, 0, 0, 0, 0, 0, 0, 128)
+    Loop
+  Death:
+    BALF ABCDEF 2
+	Stop
+  }
+}
+
+Actor MarineBullet2 : MarineBullet
+{
+  Speed 100
+  //DamageType "Sortudo"
+  Seesound "AK47TIRO"
+  Damage 5
+  Scale 0.25
+  +STRIFEDAMAGE
+}
+
+Actor UB_Marine_Puff : BulletPuff
+{
+  DamageType "FogoAmigo"
+}
+
+Actor UB_Marine_Puff2 : BulletPuff
+{
+  DamageType "Sortudo"
+}
+
+Actor PlasmaBallB : PlasmaBall
+{
+  DamageType "FogoAmigo"
+  +ALWAYSFAST
+}
+
+Actor PlasmaBall1B : PlasmaBall1
+{
+  Scale 0.5
+  DamageType "FogoAmigo"
+  +ALWAYSFAST
+}
+
+Actor PlasmaBall2B : PlasmaBall2
+{
+  Scale 0.5
+  DamageType "FogoAmigo"
+  +ALWAYSFAST
+}
+
+//================================================================
+//================================================================
+//
+//		         THE SERGEANT
+//              
+//================================================================
+//================================================================
+//  Decorate by Ravick
+//  Stats modified by Heisenberg.
+//
+//  Sprites from Sgt. Mark IV's Armagedoom
+//================================================================ 
+
+ACTOR TheSarge 3334
+{ 
+	//$Category "Unbroken Marines"
+    Health 750
+    Radius 15
+    Height 56
+    Speed 8
+    PainChance 200
+    Damage 5
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+	MONSTER
+	+FRIENDLY
+	+NORADIUSDMG
+	+FLOORCLIP
+	+FRIENDLY
+	+LOOKALLAROUND 
+	+ACTIVATEPCROSS
+	+ACTIVATEIMPACT
+	+QUICKTORETALIATE
+	+MISSILEMORE
+	+MISSILEEVENMORE
+	-COUNTKILL
+    Obituary "%o was killed by friendly fire of the Sarge!"
+    SeeSound "MARINE/SEE"
+	//AttackSound "XMSHOTGN"
+	PainSound "*pain50"
+    DeathSound "MARINE/MORTE"
+    ActiveSound "MARINE/ZIVUDEU"
+	DropItem "Stimpack"
+    DropItem "BlueArmor" 
+	DropItem "Shell"
+	DropItem "cell"
+	DropItem "cell"
+	DropItem "Clip"
+    States
+    {
+    Spawn:
+        PLY2 B 10 A_Look
+        Loop
+    See:
+        PLY2 AABBCCDD 3 A_Chase
+		TNT1 A 0 A_Look
+        Loop
+    Missile:
+		PLY2 E 8 A_FaceTarget
+		//TNT1 A 0 A_CustomRailgun (15, 0, "none", "red", RGF_FULLBRIGHT, 1, 1, "UB_Marine_Puff2", 0, 0, 0, 15, 0.1, 0.0, 0, 0, 200) 
+		//TNT1 AAAAAAA 0 A_CustomRailgun (15, 0, "none", "red", RGF_FULLBRIGHT, 0, 1, "UB_Marine_Puff2", 0, 0, 0, 15, 0.1, 0.0, 0, 0, 200) 
+		
+		PLY2 F 2 A_CustomMissile("PlasmaBall1B", random(26, 30), 0, random(-4, 4), 2, random(-4, 4))
+		PLY2 E 2
+		PLY2 F 2 A_CustomMissile("PlasmaBall2B", random(26, 30), 0, random(-4, 4), 2, random(-4, 4))
+		
+		PLY2 E 2 A_CPosRefire
+		Goto Missile+1
+		PLY2 E 6
+		Goto see
+    Pain:
+        PLY2 G 5
+        PLY2 G 3 A_Pain
+		PLY2 ABCD 4 A_FastChase
+        Goto See
+    Death:
+        PLY2 H 5
+        PLY2 I 5 A_Scream
+        PLY2 J 5 A_Fall
+        PLY2 KLM 5
+        PLY2 N -1
+        Stop
+    XDeath:
+        PLAY O 5 A_XScream 
+		PLAY P 5 
+		PLAY Q 5 A_Fall 
+		PLAY RSTUV 5 
+		PLAY W -1 
+		Stop
+    Raise:
+        PLY2 NMLKJIH 5
+        Goto See
+    }
+}
+
+
+
+//================================================================
+//================================================================
+//
+//		         UNARMED MARINE
+//              
+//================================================================
+//================================================================
+//  Decorate by Ravick
+//
+//  Sprites and base DECORATE by Xim's FistMarine
+//================================================================ 
+
+actor FistMarine 1062
+{
+	//$Category "Unbroken Marines"
+  obituary "%o was beaten by a marine."
+  health 100
+  radius 20
+  height 56
+  mass 100
+  speed 8
+  painchance 255
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+  seesound "MARINE/SEE"
+  DeathSound "MARINE/MORTE"
+  PainSound "MARINE/FACKU"
+  MONSTER
+   +SOLID
+   +SHOOTABLE
+   +CANPASS
+   +SLIDESONWALLS
+   +NODROPOFF
+   +QUICKTORETALIATE
+   +FRIENDLY
+   +MISSILEMORE
+   +MISSILEEVENMORE
+   +CANPUSHWALLS
+   +CANUSEWALLS
+   +TELESTOMP
+   +NOBLOCKMONST
+   +FLOORCLIP
+   +AVOIDMELEE
+  states
+  {
+  Spawn:
+    PLA1 E 10 A_Look
+    loop
+  See:
+    PLA1 AABBCCDD 2 A_Chase
+	TNT1 A 0 A_Look
+    loop
+  Melee:
+    PLA1 A 0 A_FaceTarget
+    PLA1 B 6 A_SkelWhoosh
+    PLA1 C 6 A_FaceTarget
+    PLA1 EF 6 A_SkelFist
+    goto See
+  Pain:
+    PLA1 G 3
+    PLA1 G 3 A_Pain
+    goto See
+  Death:
+    PLA1 H 5
+    PLA1 I 5 A_Scream
+    PLA1 J 5 A_NoBlocking
+    PLA1 K 5
+    PLA1 L 5
+    PLA1 M 5
+    PLA1 N -1
+    stop
+  XDeath:
+    PLA1 O 5
+    PLA1 P 5 A_XScream
+    PLA1 Q 5 A_NoBlocking
+    PLA1 RSTUV 5
+    PLA1 W -1
+    stop
+  Raise:
+    PLA1 KJIH 5
+    goto See
+  }
+}
+
+//================================================================
+//================================================================
+//
+//		         PISTOLS MARINE
+//              
+//================================================================
+//================================================================
+//  Decorate by Ravick
+//
+//  Sprites and base DECORATE by Xim's Marines
+//================================================================ 
+
+
+actor Marine_duaspistolas 1055
+{
+  //$Category "Unbroken Marines"
+  obituary "%o tah com dois buracos na testa, playboy!"
+  health 190
+  radius 20
+  height 56
+  mass 100
+  speed 12
+  painchance 255
+  seesound "MARINE/SEE"
+  DeathSound "MARINE/MORTE"
+  PainSound "MARINE/FACKU"
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+  dropitem "Clip"
+  dropitem "Clip"
+  dropitem "Pistol"
+  
+  MONSTER
+   +SOLID
+   +SHOOTABLE
+   +CANPASS
+   +SLIDESONWALLS
+   +NODROPOFF
+   +QUICKTORETALIATE
+   +FRIENDLY
+   +MISSILEMORE
+   +MISSILEEVENMORE
+   +CANPUSHWALLS
+   +CANUSEWALLS
+   +TELESTOMP
+   +NOBLOCKMONST
+   +FLOORCLIP
+  states
+  {
+  Spawn:
+    PL22 E 10 A_Look
+    loop
+  See:
+    PL22 AABBCCDD 2 A_Chase
+	TNT1 A 0 A_Look
+    loop
+	
+  Missile:
+	PL22 E 6 A_FacetArget
+	TNT1 A 0 A_CustomMissile("MarineBullet",45,8,0,0)
+	TNT1 A 0 A_CustomMissile("MarineBullet",40,-8,0,0)
+	PL22 F 4 A_FacetArget //bright
+	PL22 E 2 A_Jump (100, "See")
+	loop
+ Reload: //Unused
+//    PL22 F 1 A_PlaySound ("grunt/attack")     
+    PL22 E 4 A_PlaySound ("marine/Dryfire")
+    PL22 E 4 A_PlaySound ("marine/Dryfire")    //"shotguy/active"      
+    PL22 A 2
+    PL22 C 4 A_PlaySound ("marine/reload")  //marine/reload                   RELOADA  
+    PL22 A 4 A_PlaySound ("marine/reload")        
+    PL22 E 8 
+    goto See
+ Pain:
+    PL22 G 3
+    PL22 G 3 A_Pain
+    PL22 E 2 A_FaceTarget
+    PL22 F 2 A_PosAttack
+    PL22 E 1 A_FaceTarget
+    PL22 E 4 A_SkelFist
+    goto See
+  Death:
+    PL22 H 5 A_SPosAttack //gambiarra...
+    PL22 I 5 A_Scream
+    PL22 J 5 A_NoBlocking
+    PL22 K 5
+    PL22 L 5
+    PL22 M 5
+    PL22 N -1
+    stop   
+  XDeath:
+    PL22 O 5
+    PL22 P 5 A_XScream
+    PL22 Q 5 A_NoBlocking
+    PL22 RSTUV 5
+    PL22 W -1
+  Raise:
+    PL22 KJIH 5
+    goto See
+  }
+}
+
+//================================================================
+//================================================================
+//
+//		         RIFLE MARINE
+//              
+//================================================================
+//================================================================
+//  Decorate by Ravick
+//
+//================================================================ 
+
+
+actor Marine_Rifle 1061
+{
+  //$Category "Unbroken Marines"
+  obituary "Tu ja era, playboy!"
+  health 200
+  radius 20
+  height 56
+  mass 100
+  speed 12
+  painchance 255
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+	seesound "MARINE/SEE"
+  DeathSound "MARINE/MORTE"
+  PainSound "MARINE/FACKU"
+  dropitem "Pistol" 256
+  DropItem "Clip" 256
+  DropItem "Clip" 256
+  DropItem "Clip" 256
+  decal "bulletchip"
+  MONSTER
+   +SOLID
+   +SHOOTABLE
+   +CANPASS
+   +SLIDESONWALLS
+   +NODROPOFF
+   +QUICKTORETALIATE
+   +MISSILEMORE
+   +MISSILEEVENMORE
+   +CANPUSHWALLS
+   +CANUSEWALLS
+   +TELESTOMP
+   +NOBLOCKMONST
+   +FLOORCLIP
+   +STANDSTILL 
+   -FRIGHTENED 
+   -COUNTKILL 
+  states
+  {
+  Spawn:
+    PLAY A 10 A_Look
+    loop
+  Idle:
+    PLAY A 0 A_Look
+    PLAY ABCD 4 A_Wander
+	Loop
+  See:
+    PLAY AABBCCDD 2 A_Chase
+	TNT1 A 0 A_Look
+    loop
+	
+  Missile:
+    TNT1 A 0 A_Jump(100, "Missile3")
+	TNT1 A 0 A_Jump(10, "Sembala")
+
+  Missile2:
+    PLAY E 10 A_FaceTarget
+    PLAY F 2 bright A_CustomMissile ("MarineBullet2")
+    PLAY E 2 A_FaceTarget
+    PLAY F 2 bright A_CustomMissile ("MarineBullet2")
+    PLAY E 2 A_FaceTarget
+    PLAY F 2 bright A_CustomMissile ("MarineBullet2")
+    PLAY E 6 A_FaceTarget
+	Goto See	
+  Missile3:
+    PLAY E 10 A_FaceTarget
+    PLAY F 2 bright A_CustomMissile("MarineBullet2")
+    PLAY E 2 A_FaceTarget
+	TNT1 A 0 A_Jump (40, "SemBala")
+    PLAY E 2 A_CPosRefire
+	Goto Missile3+1
+  Sembala:
+    PLAY E 1 A_FaceTarget    
+    PLAY E 8 A_Playsound ("marine/sembala")
+    PLAY E 1 A_FaceTarget    
+    PLAY E 8 A_Playsound ("marine/sembala")
+    PLAY E 1 A_FaceTarget    
+    PLAY E 8 A_Playsound ("marine/sembala")
+    PLAY E 1 A_FaceTarget    
+    PLAY E 8 A_Playsound ("marine/sembala")
+    PLAY E 1 A_FaceTarget    
+    PLAY E 8 A_Playsound ("marine/sembala")                    
+    PLAY E 10 A_FaceTarget    
+    PLAY A 10 A_Playsound ("marine/reload")    
+    PLAY E 10 A_FaceTarget    
+    PLAY E 8 A_Playsound ("marine/dryfire")    
+    PLAY E 8 
+    goto Spawn
+		
+  Pain:
+    PLAY G 3
+    PLAY G 3 A_Pain
+    goto Spawn
+  Death:
+    PLAY H 5
+    PLAY I 5 A_Scream
+    PLAY J 5 A_NoBlocking
+    PLAY K 5
+    PLAY L 5
+    PLAY M 5
+    PLAY N -1
+    stop
+  XDeath:
+    PLAY O 5
+    PLAY P 5 A_XScream
+    PLAY Q 5 A_NoBlocking
+    PLAY RSTUV 5
+    PLAY W -1
+    stop
+   }
+}
+
+//================================================================
+//================================================================
+//
+//		         SNIPER MARINE
+//              
+//================================================================
+//================================================================
+//  Decorate by Ravick
+//
+//  "Tá na miiira!"
+//================================================================ 
+
+actor CramperMarine 2239
+{
+  //$Category "Unbroken Marines"
+  obituary "%o was sniped by a cramper marine."
+  health 480
+  radius 20
+  height 30
+  mass 9999
+  speed 0
+  painchance 255
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+    seesound "MARINE/CLEARSHOT"
+  DeathSound "MARINE/MORTE"
+  PainSound "MARINE/FACKU"
+  ActiveSound "MARINE/SNIPER/ACT"
+  dropitem "Armorbonus"
+  dropitem "Armorbonus"
+  dropitem "Armorbonus"
+  dropitem "HealthBonus"
+  dropitem "HealthBonus"
+  dropitem "HealthBonus"
+  dropitem "HealthBonus"
+  decal "bulletchip"
+  MONSTER
+   +SOLID
+   +SHOOTABLE
+   +CANPASS
+   +SLIDESONWALLS
+   +NODROPOFF
+   +QUICKTORETALIATE
+   +FRIENDLY
+   +CANPUSHWALLS
+   +CANUSEWALLS
+   +TELESTOMP
+   +NOBLOCKMONST
+   +FLOORCLIP
+   -COUNTKILL 
+   +MISSILEMORE
+   +MISSILEEVENMORE
+  states
+  {
+  Spawn:
+    PSPC A 10 A_Look
+    loop
+  See:
+    PSPC A 0 A_Jump (240,2)
+    PSPC A 15 A_PlaySound ("Sniper/see")
+    PSPC EEEEEE 2 A_Chase
+	TNT1 A 0 A_Look
+	PSPC EEEEEE 2 A_Chase
+    loop
+  Missile:
+    PSPC E 10 A_FaceTarget
+    //PSPC F 5 A_CustomBulletAttack(0, 0, 1, 25, "RavickPuff2")
+	PSPC E 5 A_Jump (128, "Missile")
+	PSPC A 10 //A_Look
+    Goto see 
+	
+  Pain:
+    PSPC G 3
+    PSPC G 3 A_Pain
+    goto See
+  Death:
+    PSPC G 5 A_Scream
+    PSPC H 5 
+    PSPC I 5 
+    PSPC J 5 A_NoBlocking
+    PSPC K 5
+    PSPC L 5
+    PSPC M 5
+    PSPC N -1
+    stop
+  XDeath:
+    PSPC O 5
+    PSPC P 5 A_XScream
+    PSPC Q 5 A_NoBlocking
+    PSPC RSTUV 5
+    PSPC W -1
+    stop
+  Raise:
+    PSPC KJIH 5
+    goto See
+  }
+}
+
+
+//================================================================
+//================================================================
+//
+//		         PLASMAGUN MARINE
+//              
+//================================================================
+//================================================================
+//  Decorate by Ravick
+//
+//  Sprites from "Xim Marines"
+//================================================================ 
+
+actor PlasmaRifle_Marine 1065
+{
+  //$Category "Unbroken Marines"
+  health 280
+  radius 20
+  height 56
+  mass 100
+  speed 8
+  painchance 255
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+  seesound "MARINE/SEE" 
+  DeathSound "MARINE/MORTE"
+  PainSound "MARINE/FACKU"
+  ActiveSound "MARINE/ZIVUDEU"
+  dropitem "PlasmaRifle" 256
+  dropitem "Cell" 100
+  MONSTER
+   +SOLID
+   +SHOOTABLE
+   +CANPASS
+   +SLIDESONWALLS
+   +NODROPOFF
+   +QUICKTORETALIATE
+   +FRIENDLY
+   +MISSILEMORE
+   +MISSILEEVENMORE
+   +CANPUSHWALLS
+   +CANUSEWALLS
+   +TELESTOMP
+   +NOBLOCKMONST
+   +FLOORCLIP  
+   -COUNTKILL 
+  states
+  {
+  Spawn:
+    PLA6 D 10 A_Look
+    loop
+  See:
+    PLA6 AABBCCDD 2 A_Chase
+	TNT1 A 0 A_Look
+    loop
+  Missile:
+    PLA6 E 10 A_FaceTarget
+    PLA6 F 4 A_CustomMissile("PlasmaBallB")
+    PLA6 E 1 A_CPosRefire
+    goto Missile+1
+  Pain:
+    PLA6 G 3
+    PLA6 G 3 A_Pain
+    goto See
+  Death:
+    PLA6 H 5
+    PLA6 I 5 A_Scream
+    PLA6 J 5 A_NoBlocking
+    PLA6 K 5
+    PLA6 L 5
+    PLA6 M 5
+    PLA6 N -1
+    stop
+  XDeath:
+    PLA6 O 5
+    PLA6 P 5 A_XScream
+    PLA6 Q 5 A_NoBlocking
+    PLA6 RSTUV 5
+    PLA6 W -1
+  Raise:
+    PLA6 KJIH 5
+    goto See
+  }
+}
+
+actor PlasmaRifle_Marine2 10650
+{
+  //$Category "Unbroken Marines"
+  health 450
+  radius 20
+  height 56
+  mass 99999
+  speed 0
+  painchance 100
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+	seesound "MARINE/SEE" 
+  DeathSound "MARINE/MORTE"
+  PainSound "MARINE/FACKU"
+  ActiveSound "MARINE/ZIVUDEU"
+  dropitem "PlasmaRifle" 256
+  dropitem "Cell" 100
+  dropitem "Cell" 100
+  MONSTER
+   +SOLID
+   +SHOOTABLE
+   +CANPASS
+   +SLIDESONWALLS
+   +NODROPOFF
+   +QUICKTORETALIATE
+   +FRIENDLY
+   +MISSILEMORE
+   +MISSILEEVENMORE
+   +CANPUSHWALLS
+   +CANUSEWALLS
+   +TELESTOMP
+   +NOBLOCKMONST
+   +FLOORCLIP  
+   -COUNTKILL 
+  states
+  {
+  Spawn:
+    PLA6 E 10 A_Look
+    loop
+  See:
+    PLA6 EEEEEEEEEEEEEE 2 A_Chase
+	PLA6 E 2 A_Jump ("Missile", 5)
+	PLA6 EEEEEEEEEEEEEE 2 A_Chase
+    loop
+  Missile:
+    PLA6 E 12 A_FaceTarget
+    PLA6 F 4 A_CustomMissile("PlasmaBallB")
+    PLA6 E 1 A_CPosRefire
+    goto Missile+1
+  Pain:
+    PLA6 G 3 A_ClearTarget
+    PLA6 G 3 A_Pain
+    goto Missile
+  Death:
+    PLA6 H 5
+    PLA6 I 5 A_Scream
+    PLA6 J 5 A_NoBlocking
+    PLA6 K 5
+    PLA6 L 5
+    PLA6 M 5
+    PLA6 N -1
+    stop
+  XDeath:
+    PLA6 O 5
+    PLA6 P 5 A_XScream
+    PLA6 Q 5 A_NoBlocking
+    PLA6 RSTUV 5
+    PLA6 W -1
+  Raise:
+    PLA6 KJIH 5
+    goto See
+  }
+}
+
+//================================================================
+//================================================================
+//
+//		         BAZOOKA MARINE
+//              
+//================================================================
+//================================================================
+//  Decorate by Ravick
+//
+//  Sprites from "Xim Marines"
+//================================================================ 
+
+actor BazookaMarine 1064
+{
+  //$Category "Unbroken Marines"
+  obituary "%o was sploded by a bazooka."
+  health 650
+  radius 20
+  height 56
+  mass 100
+  speed 4
+  painchance 255
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+	seesound "MARINE/SEE" 
+  DeathSound "MARINE/MORTE"
+  PainSound "MARINE/FACKU"
+  ActiveSound "MARINE/ZIVUDEU"
+  dropitem "RocketAmmo" 256
+  dropitem "RocketAmmo" 100
+  dropitem "RocketAmmo" 50
+  dropitem "RocketAmmo" 2
+  MONSTER
+   +SOLID
+   +SHOOTABLE
+   +CANPASS
+   +SLIDESONWALLS
+   +NODROPOFF
+   +QUICKTORETALIATE
+   +FRIENDLY
+   +MISSILEMORE
+   +MISSILEEVENMORE
+   +CANPUSHWALLS
+   +CANUSEWALLS
+   +TELESTOMP
+   +NOBLOCKMONST
+   +FLOORCLIP
+   +NORADIUSDMG
+   -COUNTKILL 
+  states
+  {
+  Spawn:
+    PBAZ E 10 A_Look
+    loop
+  See:
+    PBAZ AABBCCDD 2 A_Chase
+	TNT1 A 0 A_Look
+    loop
+  Missile:
+    PBAZ EE 6 A_FaceTarget
+    PBAZ F 8 A_CyberAttack //A_CustomMissile("BazookaRocket")
+	TNT1 A 0 A_Jump (90, "Missile")
+	PBAZ E 8
+    goto See
+  Pain:
+    PBAZ G 3
+    PBAZ G 3 A_Pain
+    goto See
+  Death:
+    PBAZ H 5
+    PBAZ I 5 A_Scream
+    PBAZ J 5 A_NoBlocking
+    PBAZ K 5
+    PBAZ L 5
+    PBAZ M 5
+    PBAZ N -1
+    stop
+  XDeath:
+    PBAZ O 5
+    PBAZ P 5 A_XScream
+    PBAZ Q 5 A_NoBlocking
+    PBAZ RSTUV 5
+    PBAZ W -1
+  Raise:
+    PBAZ KJIH 5
+    goto See
+  }
+}
+
+//================================================================
+//================================================================
+//
+//		         MEDIC MARINE
+//              
+//================================================================
+//================================================================
+//  From Xim's Marines!
+//
+//  Small changes by Ravick
+//================================================================ 
+
+actor Medico_Verde 1001
+{
+  //$Category "Unbroken Marines"
+  spawnid 4
+  obituary "%o was killed by a marine."
+  health 100
+  radius 20
+  height 56
+  mass 100
+  speed 8
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+  painchance 255
+  
+  seesound "MARINE/MEDIC/ACT" 
+  DeathSound "MARINE/MORTE"
+  PainSound "MARINE/FACKU"
+  ActiveSound "MARINE/MEDIC/ACT"
+  AttackSound "MARINE/MEDIC/ACT"
+  
+  dropitem "Medickit" 256
+  decal "BulletChip"
+  MONSTER
+   +SOLID
+   +SHOOTABLE
+   +CANPASS
+   +SLIDESONWALLS
+   +NODROPOFF
+   +QUICKTORETALIATE
+   +FRIENDLY
+   +MISSILEMORE
+   +MISSILEEVENMORE
+   +CANPUSHWALLS
+   +CANUSEWALLS
+   +TELESTOMP
+   +NOBLOCKMONST
+   +FLOORCLIP
+  states
+  {
+  Spawn:
+    PMED AB 10 A_Look
+    loop
+  See:
+    PMED AA 2 A_VileChase
+    PMED BB 2 A_VileChase
+    PMED CC 2 A_VileChase
+    PMED DD 2 A_VileChase
+    PMED ABCD 1 A_Recoil (-1.345)
+    loop
+  Missile:
+    PMED E 10 A_FaceTarget
+    PMED F 8 A_PosAttack
+    PMED E 8
+    goto See
+  Pain:
+    PMED G 3
+    PMED G 3 A_Pain
+    goto See
+  Death:
+    PMED H 5
+    PMED I 5 A_Scream
+    PMED J 5 A_NoBlocking
+    PMED K 5
+    PMED L 5
+    PMED M 5
+    PMED N -1
+    stop
+  XDeath:
+    PMED O 5
+    PMED P 5 A_XScream
+    PMED Q 5 A_NoBlocking
+    PMED RSTUV 5
+    PMED W -1
+  Raise:
+    PMED KJIH 5
+    goto See
+  Heal:
+    PMED X 10
+    Goto See
+    
+  }
+}
+
+//================================================================
+//================================================================
+//
+//		         S.U.S. MEDIC MARINE
+//              
+//================================================================
+//================================================================
+//  DECORATE by Ravick
+//
+//  Sprites by XIM
+//================================================================ 
+
+actor Medico_Vermelho  1052
+{
+//$Category "Unbroken Marines"
+  obituary "Everybody Dies."
+  health 500
+  radius 20
+  height 56
+  mass 100
+  speed 14
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+  painchance 255
+  
+  
+  seesound "MARINE/MEDIC/ACT"
+  PainSound "MARINE/FACKU"
+  ActiveSound "MARINE/MEDIC/ACT"
+  AttackSound "MARINE/MEDIC/ACT"
+  ///!
+  DeathSound "everybory/lies"
+  PainSound "everybory/lies"
+  dropitem "Stimpack" 256
+  decal "BulletChip"
+  dropitem "Pistol"
+  dropitem "Medkit"
+  Translation 2
+  MONSTER
+   +SOLID
+   +SHOOTABLE
+   +CANPASS
+   +SLIDESONWALLS
+   +NODROPOFF
+   +QUICKTORETALIATE
+   +FRIENDLY
+   +MISSILEMORE
+   +MISSILEEVENMORE
+   +CANPUSHWALLS
+   +CANUSEWALLS
+   +TELESTOMP
+   +NOBLOCKMONST
+   +FLOORCLIP
+   +NODROPOFF 
+   -COUNTKILL 
+  states
+  {
+  Spawn:
+    PMED E 10 A_Look
+    loop
+  See:
+    PMED AABBCCDD 2 A_Chase
+    PMED ABCD 1 A_Recoil (-1.345)
+	TNT1 A 0 A_Jump (75, 2)
+    loop
+	PMED ABCD 2 A_FastChase
+	Goto See
+  Missile:
+    PMED A 6 A_Jump (248, "Atira", "Pula", "Bagarai", "Recarrega")
+ 
+  Atira:
+    PMED E 6 A_FaceTarget
+    PMED F 4 A_CustomMissile("MarineBullet",45,8,0,0)
+    PMED E 2
+	PMED E 6 A_FaceTarget
+    PMED F 4 A_CustomMissile("MarineBullet",45,8,0,0)
+    PMED E 2
+    PMED E 6 A_FaceTarget
+    PMED F 4 A_CustomMissile("MarineBullet",45,8,0,0)
+    PMED E 2
+     goto see    
+  Pula:  
+    PMED X 3 ThrustThingZ (0, 25, 0, 0)     
+    PMED E 6 A_FaceTarget
+    PMED F 4 A_CustomMissile("MarineBullet",45,8,0,0)
+    PMED E 2
+    PMED F 4 A_CustomMissile("MarineBullet",45,8,0,0)
+    PMED E 2
+	PMED F 4 A_CustomMissile("MarineBullet",45,8,0,0)
+    PMED E 2
+    PMED E 0 A_CPosRefire    // A_MonsterRefire(200, "See")
+    PMED X 3 ThrustThingZ (0, 25, 0, 0)    
+    PMED A 1 A_Recoil (2.345)    
+    PMED F 4 A_CustomMissile("MarineBullet",45,8,0,0)
+    PMED E 2
+	PMED F 4 A_CustomMissile("MarineBullet",45,8,0,0)
+    PMED E 2
+    goto see        
+  Bagarai:
+    PMED E 4
+	PMED F 4 A_CustomMissile("MarineBullet",45,8,0,0)
+    PMED E 2
+	PMED E 1 A_CPosRefire
+    goto see
+	
+  Recarrega:  
+    PMED AA 2 A_FastChase
+    PMED BB 2 A_FastChase
+    PMED CC 2 A_FastChase
+    PMED DD 2 A_FastChase  
+    PMED E 6 A_FaceTarget
+    PMED F 4 A_PosAttack
+    PMED E 2
+    PMED E 4 A_FaceTarget
+    PMED F 2 A_PosAttack
+    PMED E 4
+    PMED E 3 A_FaceTarget
+    PMED F 2 A_PosAttack
+    PMED E 6 A_FaceTarget
+    PMED F 4 A_PosAttack
+    PMED E 2
+    PMED E 4 A_FaceTarget
+    PMED F 2 A_PosAttack
+    PMED E 4
+    PMED E 3 A_FaceTarget    
+    PMED A 4 A_FastChase            
+    PMED AB 8 A_PlaySound ("marine/reload")    
+    PMED ABCD 4 A_FastChase     
+    PMED E 4 A_PlaySound ("marine/sembalas")            
+    PMED ABCD 2 A_Chase
+    goto See
+  Melee:  
+    PMED A 3  A_FaceTarget
+    PMED X 10 A_SkelWhoosh
+    PMED G 6 A_FaceTarget
+    PMED X 10 A_SkelFist
+    PMED E 3 A_FaceTarget
+    goto See
+  Pain:
+    PMED G 3
+    PMED G 3 A_Pain    
+    PMED E 1 A_FaceTarget
+    PMED X 8 A_SargAttack    
+    PMED E 4 A_FaceTarget    
+    PMED F 3 A_PosAttack
+    PMED AA 2 A_FastChase        
+    goto missile
+  Death:
+    PMED H 5
+    PMED I 5 A_Scream
+    PMED J 5 A_NoBlocking
+    PMED K 5
+    PMED L 5
+    PMED M 5
+    PMED N -1
+    stop
+  XDeath:
+    PMED O 5
+    PMED P 5 A_XScream
+    PMED Q 5 A_NoBlocking
+    PMED RSTUV 5
+    PMED W -1
+  Raise:
+    PMED KJIH 5
+    goto See
+    
+  }
+}
+
+//================================================================
+//================================================================
+//
+//		         DRAUZIO MEDIC MARINE
+//              
+//================================================================
+//================================================================
+//  DECORATE by Ravick
+//
+//  Sprites by XIM
+//================================================================ 
+
+actor Medico_Cinza  1050
+
+{
+//$Category "Unbroken Marines"
+  obituary "If you can read THIS during the game... find a parapsychologist!!"
+  health 150
+  radius 20
+  height 56
+  mass 100
+  speed 8
+	DamageFactor "FogoAmigo", 0.0
+	DamageFactor "Sortudo", 0.0
+  painchance 255
+  DeathSound "eu/morrendo"
+  PainSound "eu/pain" 
+  decal "BulletChip"
+  Translation 0
+  MONSTER
+   +SOLID
+   +SHOOTABLE
+   +CANPASS
+   +SLIDESONWALLS
+   +NODROPOFF
+   +QUICKTORETALIATE
+//   +FRIENDLY
+   +MISSILEMORE
+   +MISSILEEVENMORE
+   +CANPUSHWALLS
+   +CANUSEWALLS
+   +TELESTOMP
+   +NOBLOCKMONST
+   +FLOORCLIP
+   +NOTARGET   
+   +EXTREMEDEATH
+   -COUNTKILL
+   
+   +AMBUSH
+  states
+  {
+  Spawn:
+    PMED AB 10 A_Look
+    loop
+  See:
+    PMED AA 2 A_Chase
+    PMED BB 2 A_Chase
+    PMED B 0 A_Jump (230, 2)
+    PMED C 2 A_PlaySound ("eu/needhelp")
+    PMED CC 2 A_Chase
+    PMED DD 2 A_Chase
+ //   PMED ABCD 1 A_Recoil (-1.345)
+    goto Spawn
+  Melee:  
+    PMED B 0 A_Jump (240, 2)
+    PMED C 2 A_PlaySound ("eu/HealUp")    
+    PMED A 3 A_FaceTarget
+    PMED X 10  A_GiveToTarget("Health",2)
+    goto Spawn    
+  Pain:
+    PMED G 3
+    PMED G 3 A_Pain
+    PMED B 3 A_GiveToTarget("Health",4)   
+    goto See
+  Death: 
+    PMED H 3 A_Scream   
+    PMED H 4 
+    PMED I 5 
+    PMED J 5 A_NoBlocking
+    PMED K 5
+    PMED L 5
+    PMED M 5
+    PMED N -1
+    stop
+  XDeath:
+    PMED O 5
+    PMED P 5 A_XScream
+    PMED Q 5 A_NoBlocking
+    PMED RSTUV 5
+    PMED W -1
+  Raise:
+    PMED KJIH 5
+    goto See
+    
+  }
+}
