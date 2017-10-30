@@ -450,13 +450,13 @@ pic  4  tics  8
 pic  5  tics  8
 pic  6  tics  8
 
-// Ravick ravickando, riariaria:
-// =============================== .: CAMERA TEXTURES :. ====================== 
 
+// Ravick ravickando, riariaria:
+// =============================== .: CAMERA TEXTURES :. ======================== 
 
 cameratexture UBCAMTX1 64 128// fit 100 100
 cameratexture UBCAMTX2 64 128
 cameratexture UBCAMTX3 64 64
 cameratexture UBCAMTX4 64 64
-//cameratexture UBCAMTX5 64 64 fit 32 32
 cameratexture UBCAMTX5 128 128
+cameratexture UBCAMTX6 64 64 fit 32 32
