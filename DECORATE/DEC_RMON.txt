@@ -1,7 +1,7 @@
 // ============================= RAVICK'S NEW MONSTERS ========================
 // Made by RAVICK
 // Compiled by HEISENBERG
-// LAST UPDATE: 18.09.2017 01:00 PM
+// LAST UPDATE: 29.10.2017 22:20 PM 		//  18.09.2017 01:00 PM
 
 //================================================================
 //
@@ -212,7 +212,7 @@ actor SoulBallTrail2
 //	MAULER DEMON
 // 
 //================================================================
-// 1th version by Kristus, new DECORATE base from KDiZD Team's one
+// 1th version by Kristus, new DECORATE base from KDiZD's Team one
 // Translations and others changes by Ravick, for Unbroken Reality!
 //================================================================
 //Obs.:Now it uses stock Demon's sprites
@@ -964,6 +964,15 @@ actor ZMarine_duaspistolas : Marine_duaspistolas 3337
     PL22 G 3 A_Pain
     PL22 E 2 A_Jump(255, "see")
     //goto See
+  Death:
+    PL22 H 8
+    PL22 I 5 A_Scream
+    PL22 J 5 A_NoBlocking
+    PL22 K 5
+    PL22 L 5
+    PL22 M 5
+    PL22 N -1
+    stop
 	}
 }
 
@@ -1033,7 +1042,6 @@ actor ZPlasmaRifle_Marine : PlasmaRifle_Marine 3338
     PLA6 G 3 A_Pain
 	PLA6 G 1 A_Jump (255, "see")
     //goto See
- 
   }
 }
 
@@ -1539,3 +1547,230 @@ Actor BallTrail2
 }
 
 */
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//================================================================
+//================================================================
+//
+//	                  VANESSA
+//
+//================================================================
+//          SPRITES TAKEN FROM 128SKINS.WAD BY DANIEL
+//
+//	          DECORATE BY RAVICK
+//
+//
+//================================================================
+
+actor Vanessa //ainda sem ednum
+{
+  //$Category "Unbroken Bosses"
+  obituary "%o was killed by Vanessa"
+  translation "112:127=176:191", "250:254=228:231"
+  health 1200
+  radius 20
+  height 56
+  mass 100
+  speed 10
+  Damagefactor VanessaEx , 0.0
+  Damagefactor Ice , 0.0
+  painchance 200
+  MinMissileChance 400
+  seesound "GRITOMUL"
+  attacksound "GRITOMUL"
+  painsound "HELPME_A"
+  deathsound "HELPME_A"
+  activesound "HELPME_A"
+//  dropitem "DoomImpBall"                         Colocamos um DropItem pra ela?
+  MONSTER
+  +BOSS
+  +FLOORCLIP
+  +STEALTH
+  states
+  {
+  Spawn:
+    SIR1 D 10 A_Look
+    loop
+  See:
+	TNT1 A 0 A_SetShootable
+	TNT1 A 0 A_TakeInventory ("PainDemais", 5)
+	TNT1 A 0 A_ChangeFlag ("FRIGHTENED", 0)
+    SIR1 AAAABBBBCCCCDDDD 1 A_Chase
+	SIR1 AAAABBBBCCCCDDDD 1 A_FastChase
+	TNT1 A 0 A_Jump (10, "Flee")
+    loop
+  Flee:
+	TNT1 A 0 A_UnSetShootable
+	TNT1 A 0 A_ChangeFlag ("FRIGHTENED", 1)
+    SIR1 AAAABBBBCCCCDDDD 1 A_Chase
+	SIR1 AAAABBBBCCCCDDDD 1 A_Wander
+	SIR1 AAAABBBBCCCCDDDD 1 A_FastChase
+	TNT1 A 0 A_Jump (100, "See")
+    loop
+  Missile:
+    SIR1 E 1 A_Jump (200, "See")
+	SIR1 E 1 A_Jump (40, "CallMarine")
+	
+    SIR1 E 10 A_FaceTarget
+    SIR1 F 4 A_CustomMissile("IceSkull", 45)
+    SIR1 E 4 A_FaceTarget
+    SIR1 F 4 A_CustomMissile("IceSkull", 45)
+    SIR1 E 4 A_FaceTarget
+    SIR1 F 4 A_CustomMissile("IceSkull", 45)
+    SIR1 E 4 A_FaceTarget
+    SIR1 F 4 A_CustomMissile("IceSkull", 45)
+    SIR1 E 8
+    goto See
+  Melee:
+    SIR1 E 1 A_Jump (100, "See")
+    SIR1 E 1 A_FaceTarget
+    SIR1 F 4 A_PlaySOund ("GRITOMUL")
+    SIR1 E 1 A_FaceTarget
+    SIR1 F 4 A_PlaySOund ("GRITOMUL")
+    SIR1 E 1 A_FaceTarget
+    SIR1 F 4 A_StopSound
+	
+	TNT1 A 0 A_CustomMissile("VanessaFire",0,  0,0)
+	TNT1 A 0 A_CustomMissile("VanessaFire",0, 30,0)
+	TNT1 A 0 A_CustomMissile("VanessaFire",0, 60,0)
+	TNT1 A 0 A_CustomMissile("VanessaFire",0, 90,0)
+	TNT1 A 0 A_CustomMissile("VanessaFire",0,120,0)
+	TNT1 A 0 A_CustomMissile("VanessaFire",0,150,0)
+	TNT1 A 0 A_CustomMissile("VanessaFire",0,180,0)
+	
+	TNT1 A 0 A_CustomMissile("VanessaFire",0, -30,0)
+	TNT1 A 0 A_CustomMissile("VanessaFire",0, -60,0)
+	TNT1 A 0 A_CustomMissile("VanessaFire",0, -90,0)
+	TNT1 A 0 A_CustomMissile("VanessaFire",0,-120,0)
+	TNT1 A 0 A_CustomMissile("VanessaFire",0,-150,0)
+	SIR1 E 10
+	Goto See
+	
+  Pain:
+    TNT1 A 0 A_JumpIfInventory ("PainDemais", 5, "Flee")
+	TNT1 A 0 A_GiveInventory ("PainDemais",1)
+	TNT1 A 0 A_Jump (20, "Flee")
+    SIR1 G 3 A_Pain
+    SIR1 G 3 A_Jump (40, "CallMarine")
+    goto See
+  CallMarine:
+    SIR1 E 8 A_FaceTarget
+    SIR1 F 4 A_SpawnItemEx ("TeleportFog", 60, 0, 1, 0, 0, 0, 0, 0, 0, 0) 
+	SIR1 F 4 A_SpawnItemEx ("ICEMARINE",   60, 0, 1, 0, 0, 0, 0, SXF_NOCHECKPOSITION , 0, 0) 
+	SIR1 E 8
+	SIR1 E 8 A_Jump (127, "CallMarine")
+    goto Flee
+	
+  Death:
+    SIR1 H 5
+	SIR1 H 5 A_NoBlocking
+		
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 I 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 J 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 I 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 J 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 I 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 J 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 I 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 J 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 I 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 J 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    TNT1 A 0 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 I 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 J 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 I 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 J 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 I 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 J 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 I 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 J 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 I 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 J 5 A_Scream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+	
+    SIR1 K 5 A_Scream
+    SIR1 L 5
+    SIR1 M 5
+    SIR1 N 5
+	Lupa1:
+	SIR1 N 5 
+	SIR1 N 5 A_Fadeout
+    stop
+  XDeath:
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 M 5 A_CustomMissile ("Blood", 5)
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 N 5 A_XScream
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 O 5 A_NoBlocking
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 PQRST 5 A_CustomMissile ("Blood", 5)
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 U 5 A_CustomMissile ("Blood", 5)
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 V 5 A_CustomMissile ("Blood", 5)
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 W 5 A_CustomMissile ("Blood", 5)
+	TNT1 AAAA 0 A_SpawnItemEx ("Blood", random (-2,2), random (-2,2), random (38,42), random (-2,2), random (-2,2), random (-2,2), random (0,360), 0, 0, 0) 
+    SIR1 WWWWWWWWWWWWWW 50 A_CustomMissile ("Blood", 5)
+	Lupa2:
+	SIR1 W 5 A_SpawnItemEx ("MegaSphere")
+	SIR1 W 5 A_Fadeout
+	stop
+  Raise:
+    SIR1 KJIH 5
+    goto See
+  }
+}
+
+ACTOR VanessaFire
+{
+  +NOBLOCKMAP
+  +NOGRAVITY
+  DamageType VanessaEx
+  RenderStyle Add
+  Alpha 1
+  Speed 6//12
+  States
+  {
+  Spawn:
+    FIRE A 2 Bright A_PlaySound ("vile/firestrt")
+    FIRE BAB 2 Bright A_Explode (2, 64)
+    FIRE C 2 Bright A_PlaySound ("vile/firecrkl")
+    FIRE BCBCDCDCDEDED 2 Bright A_Explode (2, 64)
+    FIRE E 2 Bright A_PlaySound ("vile/firecrkl")
+    FIRE FEFEFGHGHGH 2 Bright A_Fire
+    Stop
+  }
+}
+
+/* Fiz isso aqui porque a Vanessa era vulnerável demais
+a ataques em sequências rápida, como os da chaingun e o
+da chaisaw. Ela só ficava parada em pain até ser morta.
+Agora, a cada entrada no Pain, ela ganha um PainDemais, 
+e, se tiver cindo deles, foge. */
+
+Actor PainDemais : Inventory { Inventory.MaxAmount 5 }
